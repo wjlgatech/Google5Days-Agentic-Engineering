@@ -28,6 +28,12 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
   a tool contract and returns errors that teach recovery (Day 2 made executable). Wired into
   `index.html` and `README.md`.
 
+### Added (marketing)
+- **`docs/marketing/`** — a long-form article (`ARTICLE-from-prompt-to-proof.md`, ~1,400 words,
+  fully referenced) and a ~190-word short post (`SHORT-POST.md`), connecting the hub to the
+  FDE-os thesis and grounded in cited sources (MIT NANDA "GenAI Divide" 2025; FDE demand/comp
+  data; the five Google whitepapers).
+
 ### Changed
 - **End-to-end capstone check (O11)** — `scripts/e2e.py` runs the real chain on a **live** run:
   M1 executes an agent loop → M4 evaluates its actual trajectory → M5 gates the release. Added
