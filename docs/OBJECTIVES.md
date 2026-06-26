@@ -25,7 +25,8 @@ bash scripts/check.sh -v       # verbose: print every check
 | **O7** | Provenance preserved | `docs/PRINCIPLES.md` cites all 5 days |
 | **O8** | HTML hub is real & wired | `index.html` is non-trivial and references the module + the tool |
 | **O9** | Org memory is seeded & schema-valid | ≥1 decision + ≥1 lesson, each parsing against its schema |
-| **O10** | Runnable exercise works | `modules/M1-your-first-agent-loop/exercise/agent_loop.py` runs and self-tests green |
+| **O10** | Runnable exercises work | every `modules/*/exercise/*.py` self-tests green |
+| **O11** | Modules compose on a live run | `scripts/e2e.py`: a real M1 run → evaluated by M4 → gated by M5, all green |
 
 ## Human-judgment gates (NOT machine-scored — surfaced, never self-certified)
 

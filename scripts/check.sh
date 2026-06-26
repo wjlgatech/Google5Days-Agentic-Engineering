@@ -112,6 +112,12 @@ for py in modules/*/exercise/*.py; do
 done
 [[ $found -ge 1 ]] && ok "$found self-testing exercise(s) found" || bad "no runnable self-testing exercise found"
 
+hdr "O11  End-to-end: modules compose on a LIVE run (M1 → M4 → M5)"
+exists "scripts/e2e.py"
+if [[ -f scripts/e2e.py ]]; then
+  if python3 scripts/e2e.py >/dev/null 2>&1; then ok "e2e.py passed (live M1 run evaluated by M4, gated by M5)"; else bad "e2e.py FAILED — modules do not compose on a live run"; fi
+fi
+
 # ---- summary ----
 printf '\n\033[1m──────────────────────────────\033[0m\n'
 TOTAL=$((PASS+FAIL))

@@ -29,6 +29,10 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
   `index.html` and `README.md`.
 
 ### Changed
+- **End-to-end capstone check (O11)** — `scripts/e2e.py` runs the real chain on a **live** run:
+  M1 executes an agent loop → M4 evaluates its actual trajectory → M5 gates the release. Added
+  to `scripts/check.sh` (O11) and `docs/OBJECTIVES.md`. The hub's "it all composes into one
+  loop" claim is now machine-verified, not just asserted. check.sh: 81/81 green.
 - **Verification harness generalized + tightened** (`scripts/check.sh`): O4 now iterates
   **every** `modules/*/` and matches the 7 parts on **heading lines** (`^#+ .*`) instead of
   anywhere in prose (closes the run-1 flaky-risk); O10 runs `--selftest` for **every** module
