@@ -5,6 +5,12 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Added
+- **M3 · Give Your Agent Memory (Context Engineering)** — third fully-built module: the 7 parts
+  × 5 personas + a runnable, zero-dependency `context_manager.py` implementing Day 3 — a Session
+  with compaction, a MemoryStore with consolidation / blended retrieval (relevance + recency +
+  importance) / pruning / provenance, and `assemble_context()` that packs the window to a budget
+  (the context-rot defense). Self-test 8/8. The exercise also surfaces a deliberate naive-retrieval
+  limitation as a teaching point. Wired into `index.html` and `README.md`.
 - **M2 · Give Your Agent Hands (Agent Tools)** — second fully-built module: the 7 parts × 5
   personas + a runnable, zero-dependency `tool_registry.py` that validates every call against
   a tool contract and returns errors that teach recovery (Day 2 made executable). Wired into
