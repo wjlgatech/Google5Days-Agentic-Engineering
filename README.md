@@ -57,7 +57,8 @@ Google5Days-Agentic-Engineering/
 │   ├── M1-your-first-agent-loop/   ← FULLY-built module: 7 parts × 5 personas + runnable agent loop
 │   ├── M2-give-your-agent-hands/   ← FULLY-built module: tools + contracts + runnable tool registry
 │   ├── M3-give-your-agent-memory/  ← FULLY-built module: context engineering + runnable context manager
-│   └── M4-is-your-agent-any-good/  ← FULLY-built module: agent quality + runnable trajectory evaluator
+│   ├── M4-is-your-agent-any-good/  ← FULLY-built module: agent quality + runnable trajectory evaluator
+│   └── M5-ship-it-without-breaking-it/ ← FULLY-built module: prototype→production + runnable deploy gate
 ├── tools/
 │   └── spec-to-green/      ← PILLAR 2: one reusable agent tool, full 8-field contract, portable
 ├── loop/                  ← PILLAR 3: the closed-loop engine + per-stage templates

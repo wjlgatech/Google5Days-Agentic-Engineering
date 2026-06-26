@@ -5,6 +5,13 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Added
+- **M5 · Ship It Without Breaking It (Prototype → Production)** — fifth and final module,
+  completing all 5 whitepaper days: the 7 parts × 5 personas + a runnable, zero-dependency
+  `deploy_gate.py` implementing Day 5 — an **evaluation-gated deploy pipeline that imports M4's
+  evaluator** as its gate (BLOCKED → canary → human sign-off → PROMOTED / ROLLED_BACK /
+  HELD_FOR_SIGNOFF), plus `evolve()` that turns a production failure into a golden eval case
+  (Observe→Act→Evolve). Self-test 10/10. This closes the hub's Intent→…→Decide loop. Wired into
+  `index.html` and `README.md`.
 - **M4 · Is Your Agent Any Good? (Agent Quality)** — fourth fully-built module: the 7 parts ×
   5 personas + a runnable, zero-dependency `trajectory_eval.py` implementing Day 4 — Outside-In
   scoring (Black-Box task success → Glass-Box trajectory), the Four Pillars (Effectiveness /

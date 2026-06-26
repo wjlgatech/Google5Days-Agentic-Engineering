@@ -1,0 +1,15 @@
+{
+  "id": "D003",
+  "date": "2026-06-26",
+  "title": "Hub now covers all 5 whitepaper days; M5 composes M4 rather than reimplementing a gate",
+  "status": "accepted",
+  "context": "FACT: M1-M4 shipped (loop, tools, memory, quality); M5 is the last day (Prototype->Production). FACT: Day 5's core rule is evaluation-gated deployment — deployment is built ON TOP of evaluation. DECISION D001 set the deep-vertical template; each module is now a known gated motion.",
+  "options_considered": [
+    "M5 reimplements its own pass/fail logic (self-contained, but duplicates M4)",
+    "M5 imports M4's evaluator and makes it the deploy gate (composition; demonstrates the Day-5 lesson literally)"
+  ],
+  "decision": "M5's deploy_gate.py imports M4's evaluate() (path resolved from __file__) and uses it as the gate: BLOCKED unless every eval case passes, then canary, then human sign-off; evolve() turns prod failures into golden cases. The cross-module import IS the teaching point (deployment composes evaluation) and keeps a single source of truth for 'good'.",
+  "consequences": "The 5 modules now form a dependency chain (M5->M4) that mirrors the real loop. check.sh O10 runs M5's selftest, which exercises M4 too. Adds a coupling: moving/renaming M4's exercise breaks M5's import — acceptable and intentional (it models real pipeline coupling). Hub now spans learning->production end-to-end.",
+  "confidence": "high",
+  "owner": "wjlgatech"
+}
