@@ -1,0 +1,15 @@
+{
+  "id": "D002",
+  "date": "2026-06-26",
+  "title": "Generalize the check harness to gate every module, and match parts on heading lines",
+  "status": "accepted",
+  "context": "FACT: adding M2 exposed that O4/O10 were hardcoded to M1. FACT: O4 grepped part words anywhere in prose, so a stray phrase could fake a pass (flaky-risk flagged at end of run 1). DECISION from D001: each new module is a known, gated motion.",
+  "options_considered": [
+    "Duplicate the M1 O4/O10 block per module (copy-paste, drifts)",
+    "Generalize O4/O10 to iterate modules/*/ and tighten O4 to heading-line matching"
+  ],
+  "decision": "Generalize: O4 iterates every modules/*/ requiring 5 persona files each with the 7 part HEADINGS (matched on '^#+ .*<part>', not anywhere in prose); O10 runs --selftest for every modules/*/exercise/*.py that supports it. Adding a module now auto-extends the gate with no harness edit.",
+  "consequences": "The referee can't be fooled by prose, and scales for free to M3..M5. Slightly stricter: module authors must use real Markdown headings for the 7 parts (documented in AGENTS.md).",
+  "confidence": "high",
+  "owner": "wjlgatech"
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Agentic Engineering Hub</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#161b22; --panel2:#1c2230; --ink:#e6edf3; --mut:#8b97a7;
+    --line:#262d3a; --accent:#3553ff; --accent2:#23c197; --warn:#f0a93b; --rad:14px;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#1a2440 0,var(--bg) 55%);
+    color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  a{color:var(--accent2);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  header{padding:64px 0 28px}
+  .kic{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 13px;margin-bottom:18px}
+  h1{font-size:clamp(30px,5vw,52px);line-height:1.08;margin:.1em 0 .3em;letter-spacing:-.02em}
+  h1 .g{background:linear-gradient(92deg,#6f8bff,#23c197);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:19px;color:#c9d4e2;max-width:760px}
+  .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:11px 18px;border-radius:11px;font-weight:600;border:1px solid var(--line)}
+  .btn.p{background:var(--accent);color:#fff;border-color:transparent}
+  .btn.s{background:var(--panel);color:var(--ink)}
+  section{padding:34px 0;border-top:1px solid var(--line);margin-top:14px}
+  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:0 0 18px;font-weight:700}
+  .grid{display:grid;gap:14px}
+  .p5{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .p3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);
+    padding:18px 18px 16px;transition:.16s;display:block;color:inherit}
+  .card:hover{transform:translateY(-3px);text-decoration:none;border-color:#3b4666;background:var(--panel2)}
+  .card .ico{font-size:22px} .card h3{margin:.5em 0 .15em;font-size:17px}
+  .card .who{color:var(--mut);font-size:13.5px}
+  .card .tag{display:inline-block;margin-top:10px;font-size:12px;color:var(--accent2);
+    border:1px solid var(--line);border-radius:7px;padding:2px 8px}
+  .loop{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);
+    padding:18px;overflow-x:auto;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#bcd}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--mut);font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+  td code{color:var(--accent2)}
+  .two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+  .pill{font-size:12px;color:var(--warn);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
+  code.k{background:#0a0d12;border:1px solid var(--line);border-radius:7px;padding:2px 7px;color:#cdd6e0;font-size:13.5px}
+  footer{color:var(--mut);font-size:13.5px;padding:40px 0 60px;border-top:1px solid var(--line);margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="kic">Humans + AI agents · learn · build · compound</span>
+  <h1>The <span class="g">Agentic Engineering</span> Hub</h1>
+  <p class="lede">Move from <b>curiosity → understanding → practice → production → compounding
+  capability</b>. Built on Google's five <i>5-Day Agentic Engineering</i> whitepapers,
+  distilled into one operating system you don't just read — you <b>run</b>.</p>
+  <div class="cta">
+    <a class="btn p" href="modules/M1-your-first-agent-loop/">▶ Run your first agent loop (M1)</a>
+    <a class="btn s" href="docs/PRINCIPLES.md">The principles</a>
+    <a class="btn s" href="docs/OBJECTIVES.md">How “done” is checked</a>
+  </div>
+</header>
+
+<section id="personas">
+  <h2>1 · Plug in at your level</h2>
+  <div class="grid p5">
+    <a class="card" href="personas/15-explorer.md"><div class="ico">🧒</div><h3>15 · Explorer</h3><div class="who">confidence, curiosity, a fun win today</div><span class="tag">start →</span></a>
+    <a class="card" href="personas/20-junior.md"><div class="ico">🛠️</div><h3>20 · Junior Eng</h3><div class="who">workflows, debugging, shipping</div><span class="tag">start →</span></a>
+    <a class="card" href="personas/30-senior.md"><div class="ico">🏗️</div><h3>30 · Senior Eng</h3><div class="who">architecture, reliability, reuse</div><span class="tag">start →</span></a>
+    <a class="card" href="personas/40-director.md"><div class="ico">🎯</div><h3>40 · AI Director</h3><div class="who">operating model, evaluation, risk</div><span class="tag">start →</span></a>
+    <a class="card" href="personas/50-executive.md"><div class="ico">💼</div><h3>50 · Executive</h3><div class="who">strategy, governance, ROI</div><span class="tag">start →</span></a>
+  </div>
+</section>
+
+<section id="loop">
+  <h2>The five days are one loop</h2>
+  <div class="loop">
+   ① Intent ─▶ ② Plan ─▶ ③ Specification ─▶ ④ Execute ─▶ ⑤ Validate<br>
+   &nbsp;&nbsp;&nbsp;▲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼<br>
+   ⑨ Decide ◀─ ⑧ Learn ◀─ ⑦ Diagnose ◀─ ⑥ Evaluate ◀────────────────┘
+  </div>
+  <table>
+    <tr><th>Day · whitepaper</th><th>Teaches</th><th>Loop stage</th></tr>
+    <tr><td>1 · Introduction to Agents</td><td>agent = model + tools + orchestration + runtime, in a loop</td><td>Intent → Plan</td></tr>
+    <tr><td>2 · Agent Tools (+ MCP)</td><td>task-shaped tools with clear contracts</td><td>Specification → Execute</td></tr>
+    <tr><td>3 · Context Engineering</td><td>sessions (now) + memory (across time)</td><td>Execute (state)</td></tr>
+    <tr><td>4 · Agent Quality</td><td>evaluate the <i>trajectory</i>, not just the answer</td><td>Validate → Evaluate → Diagnose</td></tr>
+    <tr><td>5 · Prototype → Production</td><td>AgentOps, evaluation-gated deployment</td><td>Learn → Decide → loop</td></tr>
+  </table>
+  <p style="margin-top:14px"><a href="loop/README.md">→ The closed-loop engine &amp; per-stage templates</a></p>
+</section>
+
+<section id="build">
+  <h2>2 · Reusable tools &amp; 3 · the living hub</h2>
+  <div class="two">
+    <a class="card" href="modules/M1-your-first-agent-loop/">
+      <div class="ico">📦</div><h3>Module · M1 — Your First Agent Loop</h3>
+      <div class="who">A real, runnable, zero-dependency agent. The 7-part learning structure,
+      adapted for all 5 personas. The template every future module copies.</div>
+      <span class="tag">7 parts × 5 personas · runnable</span></a>
+    <a class="card" href="modules/M2-give-your-agent-hands/">
+      <div class="ico">🤝</div><h3>Module · M2 — Give Your Agent Hands</h3>
+      <div class="who">Tools with contracts. A zero-dep tool registry that validates every call
+      and returns errors that teach recovery. Day 2, made runnable, for all 5 personas.</div>
+      <span class="tag">tools · 8-field contract · runnable</span></a>
+    <a class="card" href="tools/spec-to-green/">
+      <div class="ico">🧰</div><h3>Tool · spec-to-green</h3>
+      <div class="who">Turn a fuzzy request into a verifiable spec with a deterministic check,
+      then drive code to green. Full 8-field contract; portable across Claude Code, Codex,
+      Hermes, Gemini.</div>
+      <span class="tag">8-field contract · portable</span></a>
+  </div>
+  <p style="margin-top:16px">The hub is a <b>living system</b>: every run records a
+  <a href="memory/decisions/">decision</a> and a <a href="memory/lessons/">lesson</a>, so the
+  next run starts smarter. Correctness is enforced deterministically
+  (<code class="k">bash scripts/check.sh</code>) — <span class="pill">but “good?” stays a human call</span>.</p>
+</section>
+
+<section id="run">
+  <h2>Run it now</h2>
+  <div class="loop">$ python3 modules/M1-your-first-agent-loop/exercise/agent_loop.py --selftest<br>
+$ open index.html<br>
+$ bash scripts/check.sh&nbsp;&nbsp;&nbsp;# the deterministic gate — drive it green</div>
+</section>
+
+<footer>
+  Built on Google's “5-Day Agentic Engineering” whitepapers (2026), in <a href="docs/">docs/</a>.
+  An independent learning + tooling system applying their principles; provenance tagged in
+  <a href="docs/PRINCIPLES.md">PRINCIPLES.md</a>. &nbsp;·&nbsp; North Star: turn purpose into
+  action, action into evidence, evidence into wiser next decisions.
+</footer>
+
+</div>
+</body>
+</html>

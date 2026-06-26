@@ -1,0 +1,23 @@
+{
+  "name": "spec-to-green",
+  "kind": "workflow",
+  "compatible_agents": ["claude-code", "codex", "hermes", "gemini", "any-openai-compatible"],
+  "purpose": "Turn a fuzzy feature request into a verifiable spec WITH a deterministic check, then drive code to green against that check — so 'done' is proven, not claimed. It operationalizes Day 4/5: evaluation-gated, the check is written before the code.",
+  "inputs": "A natural-language task or feature request; the target repo (its test/check command auto-detected); optional acceptance hints. If the repo has no check command, the tool co-defines one.",
+  "outputs": "1) a spec file (objective + acceptance criteria as machine-checkable assertions); 2) a check command or script that encodes those criteria; 3) a diff that makes the check pass; 4) a short trajectory log of what was tried (Day 4: the trajectory is the truth).",
+  "when_to_use": "A task is fuzzy or multi-step, correctness matters, and you want proof-of-done rather than a confident 'looks good'. Ideal as the Specification->Validate stages of the hub loop.",
+  "when_not_to_use": "A one-line, obviously-correct change (writing a check is ceremony); pure exploration/spikes where the goal is learning, not shipping; tasks whose success is inherently subjective (route those to a human gate, not this tool).",
+  "workflow": [
+    "Restate the intent in one sentence + name what 'done' looks like (Intent).",
+    "Detect the repo's verification source: objective registry > project check/test command > co-define 3-7 criteria with the human (Plan).",
+    "Write the spec: each acceptance criterion as a deterministic assertion; add the check FIRST and watch it fail red (Specification).",
+    "Make the smallest change that turns one criterion green; re-run the check (Execute).",
+    "Read each failure, fix the named file, re-run; stop after the same failure 3x and escalate with what was tried (Validate, bounded loop).",
+    "When green, score the trajectory against the Four Pillars and surface any human-judgment gate; never self-certify subjective quality (Evaluate).",
+    "Record one decision + one lesson to org memory so the next run starts smarter (Learn/Decide)."
+  ],
+  "validation": "The repo's check command exits 0 AND every acceptance assertion is exercised by it. Deterministic: a human can re-run `bash scripts/check.sh` (or the detected command) and reproduce green. No green is faked; an honest red beats a bad fix.",
+  "failure_handling": "Missing info -> ask <=2 clarifying questions at genuine forks, else state the assumption explicitly and proceed. Tool/command fails -> report the exact error + last file touched, do not paper over it. Same failure 3x -> halt, escalate with the trajectory. Low confidence on a subjective criterion -> hand it to a human gate rather than guess.",
+  "idempotent": true,
+  "deterministic_gate": true
+}

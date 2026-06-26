@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hub/schemas/decision.schema.json",
+  "title": "Decision Log Entry",
+  "description": "Reusable organizational memory: a decision the human+AI team made. Day 3 (descriptive, provenance-tracked) + Day 5 (version everything). Separates fact/assumption/decision/opinion (Principle #4).",
+  "type": "object",
+  "required": ["id", "date", "title", "status", "context", "decision", "consequences", "owner"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^D[0-9]{3,}$", "description": "e.g. D001" },
+    "date": { "type": "string", "format": "date" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["proposed", "accepted", "rejected", "superseded"] },
+    "context": { "type": "string", "description": "FACTS + ASSUMPTIONS in play at decision time." },
+    "options_considered": { "type": "array", "items": { "type": "string" } },
+    "decision": { "type": "string", "description": "What we chose (the DECISION) and why." },
+    "consequences": { "type": "string", "description": "Trade-offs accepted; what this makes easier/harder." },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "owner": { "type": "string", "description": "Human accountable (humans own high-stakes calls)." },
+    "supersedes": { "type": "string", "description": "id of a prior decision this replaces, if any." }
+  }
+}

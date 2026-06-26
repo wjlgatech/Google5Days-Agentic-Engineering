@@ -1,0 +1,16 @@
+{
+  "id": "D001",
+  "date": "2026-06-26",
+  "title": "First pass ships a deep vertical template, not a broad scaffold",
+  "status": "accepted",
+  "context": "FACT: the mission spans 3 pillars x 5 personas x 5 source whitepapers — too large to build well in one pass. FACT: the user builds compounding, self-improving systems (sos, loop-engineering-anything, compound-engineering-plugin). ASSUMPTION: a proven, copyable template beats a wide-but-shallow map for compounding.",
+  "options_considered": [
+    "Deep vertical: one module fully built across 5 personas + one tool + the loop engine + a real check harness",
+    "Broad scaffold: all modules/tools stubbed, nothing deep",
+    "Engine-first: loop + schemas, minimal content"
+  ],
+  "decision": "Build the deep vertical (chosen by the user). Deliver the operating system (README, PRINCIPLES, OBJECTIVES, schemas, loop), ONE complete module (M1, 7 parts x 5 personas, runnable artifact), ONE complete tool (spec-to-green, 8-field contract), org memory, and a deterministic check.sh. Form factor: Markdown source of truth + self-contained HTML hub.",
+  "consequences": "Makes the next runs cheap: M2..Mn and new tools copy M1 and spec-to-green. Costs breadth now (only M1 exists). check.sh O4/O5 are written so adding a module/tool is a known, gated motion.",
+  "confidence": "high",
+  "owner": "wjlgatech"
+}

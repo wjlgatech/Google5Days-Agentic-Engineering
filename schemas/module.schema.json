@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hub/schemas/module.schema.json",
+  "title": "Learning Module (adaptive capability module)",
+  "description": "A plug-and-play learning module. Every module MUST contain the 7 mission-required parts and MUST be adapted to each of the 5 personas. Enforces mission Pillar 1 + Day 1 progressive complexity.",
+  "type": "object",
+  "required": ["id", "title", "owns_loop_stage", "source_day", "personas", "parts"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^M[0-9]+(-[a-z0-9-]+)?$", "description": "Stable module id, e.g. M1-your-first-agent-loop" },
+    "title": { "type": "string", "minLength": 4 },
+    "one_liner": { "type": "string", "description": "What a learner can do after this module." },
+    "owns_loop_stage": {
+      "type": "string",
+      "enum": ["Intent", "Plan", "Specification", "Execute", "Validate", "Evaluate", "Diagnose", "Learn", "Decide"],
+      "description": "Which closed-loop stage this module primarily teaches."
+    },
+    "source_day": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 5 },
+      "minItems": 1,
+      "description": "Which whitepaper day(s) ground this module — provenance (Principle #4)."
+    },
+    "personas": {
+      "type": "array",
+      "description": "Must cover all 5 personas.",
+      "minItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["15-explorer", "20-junior", "30-senior", "40-director", "50-executive"]
+      }
+    },
+    "parts": {
+      "type": "object",
+      "description": "The 7 mission-required parts. All are required.",
+      "required": ["plain_explanation", "concrete_example", "hands_on_exercise", "real_world_use_case", "failure_mode", "measurable_output", "next_step"],
+      "additionalProperties": false,
+      "properties": {
+        "plain_explanation": { "type": "string", "description": "Part 1 — plain-language explanation a motivated 15-year-old understands." },
+        "concrete_example": { "type": "string", "description": "Part 2 — a concrete, not abstract, example." },
+        "hands_on_exercise": { "type": "string", "description": "Part 3 — something to DO now." },
+        "real_world_use_case": { "type": "string", "description": "Part 4 — where this matters in production / a business." },
+        "failure_mode": { "type": "string", "description": "Part 5 — a named failure mode / anti-pattern to avoid." },
+        "measurable_output": { "type": "string", "description": "Part 6 — the artifact + how you measure it worked (Day 4)." },
+        "next_step": { "type": "string", "description": "Part 7 — recommended next step, keyed to learner level." }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "L002",
+  "date": "2026-06-26",
+  "what_failed": "The M2 tool_registry.py self-test 'unknown param teaches' failed: calling search_orders({'qty': 3}) returned the missing-required-arg error, not the unknown-param error the test meant to exercise.",
+  "why_it_failed": "Root cause: validation ordering. The registry checks required-params-present BEFORE checking for unknown params. The test omitted the required 'query', so the earlier check fired first and masked the path under test. The code was correct; the TEST set up the wrong precondition.",
+  "signal_missed": "The actual error string returned ('missing required arg query') named a different rule than the assertion expected — a precise mismatch that points straight at the test's precondition, not the implementation.",
+  "system_improvement": {
+    "rule": "When asserting that validation rule B fires, satisfy every earlier-ordered rule (A) in the test input, or the earlier rule masks B. Test one rule at a time with otherwise-valid input.",
+    "test_or_check": "Fixed: the assertion now calls search_orders({'query':'shoes','qty':3}) so the required check passes and the unknown-param path is actually exercised. scripts/check.sh O10 runs this self-test for every module exercise.",
+    "prompt": "",
+    "workflow": "",
+    "tool": ""
+  },
+  "becomes_eval_case": true
+}

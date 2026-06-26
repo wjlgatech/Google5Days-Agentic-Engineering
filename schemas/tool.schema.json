@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hub/schemas/tool.schema.json",
+  "title": "Reusable Agent Tool Contract",
+  "description": "The 8-field contract every reusable coding-agent tool in this hub MUST ship (mission Pillar 2), fused with Day 2 tool-design rules. Portable across Claude Code, Codex, Hermes, Gemini.",
+  "type": "object",
+  "required": ["name", "kind", "compatible_agents", "purpose", "inputs", "outputs", "when_to_use", "when_not_to_use", "workflow", "validation", "failure_handling"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "Descriptive, specific, kebab-case name (Day 2: a clear name aids selection + audit)." },
+    "kind": {
+      "type": "string",
+      "enum": ["skill", "plugin", "slash-command", "workflow", "hook", "agent-definition", "prompt-template", "context-file", "eval-harness", "tool-schema", "mcp-integration", "ci-cd", "code-review", "planning-template"],
+      "description": "Tool category (mission Pillar 2 list)."
+    },
+    "compatible_agents": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "enum": ["claude-code", "codex", "hermes", "gemini", "any-openai-compatible", "any"] }
+    },
+    "purpose": { "type": "string", "description": "Field 1 — what problem it solves." },
+    "inputs": { "type": "string", "description": "Field 2 — what it needs (typed where possible)." },
+    "outputs": { "type": "string", "description": "Field 3 — what it produces (concise; don't swamp context — Day 2)." },
+    "when_to_use": { "type": "string", "description": "Field 4 — the triggering situation." },
+    "when_not_to_use": { "type": "string", "description": "Field 5 — its boundaries (Day 2: define what it does NOT do)." },
+    "workflow": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string" },
+      "description": "Field 6 — the ordered steps it executes."
+    },
+    "validation": { "type": "string", "description": "Field 7 — how we know it worked (Day 4: measurable, prefer deterministic check)." },
+    "failure_handling": { "type": "string", "description": "Field 8 — what happens when info is missing, tools fail, or confidence is low (Day 2: errors must teach recovery)." },
+    "idempotent": { "type": "boolean", "description": "Day 5: is it safe to retry? Default conservative = false." },
+    "deterministic_gate": { "type": "boolean", "description": "Does correctness rest on a deterministic check (test/schema/hook) rather than model judgment? Prefer true for critical paths." }
+  }
+}
