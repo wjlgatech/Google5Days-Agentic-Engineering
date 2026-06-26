@@ -5,6 +5,11 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Added
+- **M4 · Is Your Agent Any Good? (Agent Quality)** — fourth fully-built module: the 7 parts ×
+  5 personas + a runnable, zero-dependency `trajectory_eval.py` implementing Day 4 — Outside-In
+  scoring (Black-Box task success → Glass-Box trajectory), the Four Pillars (Effectiveness /
+  Efficiency / Robustness / Safety), pairwise judging, and a `NEEDS_HUMAN` gate it never
+  self-answers (the rubric is human-owned). Self-test 11/11. Wired into `index.html` and `README.md`.
 - **M3 · Give Your Agent Memory (Context Engineering)** — third fully-built module: the 7 parts
   × 5 personas + a runnable, zero-dependency `context_manager.py` implementing Day 3 — a Session
   with compaction, a MemoryStore with consolidation / blended retrieval (relevance + recency +
