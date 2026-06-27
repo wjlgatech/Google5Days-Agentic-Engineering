@@ -15,3 +15,7 @@ you can switch any time, and every module is written for all five.
 **Rule of thumb:** start one level *below* where you think you are. Faster win, same depth
 underneath. Every persona's first stop is the same module — **[M1 · Your First Agent
 Loop](../modules/M1-your-first-agent-loop/)** — just framed for you.
+
+➡️ **See the whole journey:** [**Learning Paths (M1 → M5, per persona)**](LEARNING-PATHS.md) — the
+capstone map that threads all five modules into one path for each persona, each ending in an
+integrative project and a measurable "graduated when."

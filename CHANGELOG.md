@@ -34,6 +34,13 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
   FDE-os thesis and grounded in cited sources (MIT NANDA "GenAI Divide" 2025; FDE demand/comp
   data; the five Google whitepapers).
 
+### Added
+- **Capstone learning paths** — `personas/LEARNING-PATHS.md`: threads all five modules (M1→M5)
+  into one coherent journey **per persona**, each step naming its runnable artifact and outcome,
+  and ending in an **integrative capstone project** + a measurable "graduated when." Linked from
+  `personas/README.md`, `index.html`, and `README.md`; gated by a new **O13** check (the doc must
+  reference all 5 modules and all 5 personas).
+
 ### Changed
 - **No-broken-promises check (O12)** — closes a harness blind spot: O4 only iterated *existing*
   module dirs, so a deleted module passed silently. O12 cross-checks `index.html`'s module cards

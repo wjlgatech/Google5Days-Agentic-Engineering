@@ -133,6 +133,14 @@ for d in modules/*/; do
   grep -q "$mod" index.html && ok "$mod is advertised in index.html" || bad "$mod exists but is NOT advertised in index.html"
 done
 
+hdr "O13  Capstone learning-path doc ties M1→M5 across all 5 personas"
+LP=personas/LEARNING-PATHS.md
+exists "$LP"
+if [[ -f "$LP" ]]; then
+  for mod in M1 M2 M3 M4 M5; do has "$LP" "$mod" "capstone references $mod"; done
+  for p in "${PERSONAS[@]}"; do has "$LP" "$p" "capstone references persona $p"; done
+fi
+
 # ---- summary ----
 printf '\n\033[1m──────────────────────────────\033[0m\n'
 TOTAL=$((PASS+FAIL))

@@ -24,7 +24,8 @@ bash scripts/check.sh                                                        # s
 Then **pick your level** → [`personas/`](personas/):
 🧒 [15](personas/15-explorer.md) · 🛠️ [20](personas/20-junior.md) ·
 🏗️ [30](personas/30-senior.md) · 🎯 [40](personas/40-director.md) ·
-💼 [50](personas/50-executive.md).
+💼 [50](personas/50-executive.md). &nbsp;Or see the whole journey →
+**[Learning Paths (M1→M5, per persona)](personas/LEARNING-PATHS.md)**.
 
 ---
 
