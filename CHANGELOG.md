@@ -35,6 +35,11 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
   data; the five Google whitepapers).
 
 ### Changed
+- **No-broken-promises check (O12)** — closes a harness blind spot: O4 only iterated *existing*
+  module dirs, so a deleted module passed silently. O12 cross-checks `index.html`'s module cards
+  against `modules/` **bidirectionally** — every advertised module must exist, and every on-disk
+  module must be advertised. Verified to catch a deletion (hiding M3 turns the harness RED).
+  check.sh: 91/91 green.
 - **End-to-end capstone check (O11)** — `scripts/e2e.py` runs the real chain on a **live** run:
   M1 executes an agent loop → M4 evaluates its actual trajectory → M5 gates the release. Added
   to `scripts/check.sh` (O11) and `docs/OBJECTIVES.md`. The hub's "it all composes into one

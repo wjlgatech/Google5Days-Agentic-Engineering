@@ -118,6 +118,21 @@ if [[ -f scripts/e2e.py ]]; then
   if python3 scripts/e2e.py >/dev/null 2>&1; then ok "e2e.py passed (live M1 run evaluated by M4, gated by M5)"; else bad "e2e.py FAILED — modules do not compose on a live run"; fi
 fi
 
+hdr "O12  No broken promises — advertised modules exist, on-disk modules are advertised"
+# (a) every module the hub advertises in index.html must exist on disk (catches a deleted module)
+adv=$(grep -oE 'modules/M[0-9][^"/]*' index.html 2>/dev/null | sort -u)
+[[ -n "$adv" ]] || bad "no module cards found in index.html"
+while IFS= read -r m; do
+  [[ -z "$m" ]] && continue
+  [[ -d "$m" ]] && ok "advertised $m exists" || bad "index.html advertises a MISSING module: $m"
+done <<< "$adv"
+# (b) every module on disk must be advertised (catches an orphan/unlinked module)
+for d in modules/*/; do
+  [[ -d "$d" ]] || continue
+  mod="modules/$(basename "$d")"
+  grep -q "$mod" index.html && ok "$mod is advertised in index.html" || bad "$mod exists but is NOT advertised in index.html"
+done
+
 # ---- summary ----
 printf '\n\033[1m──────────────────────────────\033[0m\n'
 TOTAL=$((PASS+FAIL))

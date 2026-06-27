@@ -27,6 +27,7 @@ bash scripts/check.sh -v       # verbose: print every check
 | **O9** | Org memory is seeded & schema-valid | ≥1 decision + ≥1 lesson, each parsing against its schema |
 | **O10** | Runnable exercises work | every `modules/*/exercise/*.py` self-tests green |
 | **O11** | Modules compose on a live run | `scripts/e2e.py`: a real M1 run → evaluated by M4 → gated by M5, all green |
+| **O12** | No broken promises | every module advertised in `index.html` exists on disk, and every module on disk is advertised (bidirectional) |
 
 ## Human-judgment gates (NOT machine-scored — surfaced, never self-certified)
 
