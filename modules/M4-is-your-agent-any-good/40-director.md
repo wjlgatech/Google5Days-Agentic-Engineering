@@ -19,8 +19,9 @@ let a metric auto-approve quality. Scale it: golden datasets owned by domain exp
 every change, online monitors that page when quality drifts, and a 48-hour loop from prod failure
 to new eval case.
 
-## Hands-on exercise
+## Hands-on (your team runs it — you read the result)
 
+You don't type this — have an engineer run it in front of you (needs nothing installed) and read the result together:
 ```bash
 cd modules/M4-is-your-agent-any-good/exercise && python3 trajectory_eval.py --selftest
 ```

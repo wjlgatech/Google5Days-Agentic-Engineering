@@ -19,8 +19,9 @@ PII redaction before persistence, per-user isolation/ACLs, retention/TTL policy,
 against **memory poisoning**. The same `memory/` pattern is how this hub stores its *team* memory
 (decisions + lessons) — auditable organizational knowledge.
 
-## Hands-on exercise
+## Hands-on (your team runs it — you read the result)
 
+You don't type this — have an engineer run it in front of you (needs nothing installed) and read the result together:
 ```bash
 cd modules/M3-give-your-agent-memory/exercise && python3 context_manager.py --selftest
 ```

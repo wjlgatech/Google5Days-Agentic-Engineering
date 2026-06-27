@@ -19,7 +19,7 @@ when something does break in production, it's turned into a test — so the syst
 trustworthy over time instead of decaying. That ratchet is the difference between compounding and
 firefighting.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (nothing to install):
 ```bash

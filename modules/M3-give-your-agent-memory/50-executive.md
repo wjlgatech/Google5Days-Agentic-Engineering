@@ -18,7 +18,7 @@ shouldn't." Now scale it: an agent that remembers a customer is allergic to pean
 them is gold; the same system leaking that across customers, or keeping it forever with no audit
 trail, is a headline. Same feature, opposite outcomes — the difference is governance.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (nothing to install):
 ```bash

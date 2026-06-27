@@ -59,7 +59,7 @@ python3 agent_loop.py --selftest   # prints ✓/✗ for each check; you want all
 `checks` dict in `selftest()`, e.g.
 `"shout works": run("shout hi")["answer"].endswith("HI")`, then re-run `--selftest` and watch
 your own check go green. That green check is your trophy — a thing that *proves* it works, not
-just "looks like it works." (That's the whole habit: you don't just *use* the test, you *grow* it.)
+just "looks like it works."
 
 ## Next step
 

@@ -18,7 +18,7 @@ wasn't allowed to. Only looking at the final answer, they seem equal — and you
 Evaluating the path, one passes and one fails. That's the difference between a program that compounds
 trust and one that quietly degrades until it embarrasses you in front of a customer or regulator.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (nothing to install):
 ```bash

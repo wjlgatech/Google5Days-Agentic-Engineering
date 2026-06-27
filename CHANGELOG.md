@@ -4,6 +4,18 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 
 ## [Unreleased]
 
+### Changed
+- **HJ2 framing pass · director/executive altitude leak (all 5 modules).** A five-reader audit
+  (one per module, shared altitude rubric) confirmed persona differentiation is genuinely real
+  (build→debug→architect→operate→fund, scored 8–9.5/10) — but found one systemic drift: the
+  **40-director** lessons showed a CLI block under a bare "Hands-on exercise" header with no
+  delegation guard, and the **50-executive** lessons implied the exec runs code ("yes, you too",
+  and M1's "or do it"). Reframed all 10 headings to signal delegation ("Hands-on — your team runs
+  it, you read the result" / "someone runs it, you just watch"), added the missing "have an
+  engineer run it in front of you" guard to every director lesson, and removed M1-exec's "or do
+  it" invitation. Also trimmed a meta sentence in M1/15-explorer that overshot explorer altitude.
+  Headings retain the "Hands-on" token the O4 gate keys on; gate still 102/102.
+
 ### Fixed
 - **HJ1 cold-read sweep · M2–M5 exercises (all personas).** Extended the M1 walk-through to the
   remaining four modules, verifying each runnable exercise end-to-end:
