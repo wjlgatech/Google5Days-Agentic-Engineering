@@ -4,6 +4,25 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 
 ## [Unreleased]
 
+### Fixed
+- **HJ1 cold-read sweep · M1 exercises across all 5 personas.** A human walk-through of the M1
+  path (the kind the 102-check gate can't perform) surfaced three classes of break, all fixed
+  and each fix verified by simulating the student's edits and running the result:
+  - **Dead-tool trap (15-explorer, 20-junior).** The "add your own tool" exercises pointed only
+    at the `TOOLS` registry, but the rule-based `think()` planner has no rule to *select* a new
+    tool — so a student who followed the steps saw zero change. Both lessons now spell out three
+    edits (write → register-with-key → add a planner rule) and `agent_loop.py` carries `YOUR TURN`
+    guide comments at both spots (comments only; shipped self-test unchanged, still 6/6).
+  - **False debugging promise (20-junior).** The lesson said change `\d+`→`\d` and "watch a test
+    go ✗" — but the self-test mission `6 * 7` is single-digit, so the match is identical and every
+    test stayed green. Replaced with the verified break `\d+`→`\d\d+` (drops single-digit matches →
+    `calculator used` and `answer has 42` go red), with the trajectory explanation.
+  - **Wrong path (all 5 personas).** Lessons said `cd exercise`, which fails from the repo root the
+    README quickstart leaves you in. Now `cd modules/M1-your-first-agent-loop/exercise`.
+  Also: the `TOOLS` "list" → "dict (needs a name key)" wording, and a self-test line for the
+  student's own tool so their addition is *proven green*, not eyeballed — closing the "grow the
+  test, don't just use it" habit the personas preach. Gate still 102/102.
+
 ### Added
 - **M5 · Ship It Without Breaking It (Prototype → Production)** — fifth and final module,
   completing all 5 whitepaper days: the 7 parts × 5 personas + a runnable, zero-dependency

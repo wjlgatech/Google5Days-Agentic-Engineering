@@ -22,7 +22,7 @@ into a regression test?* (Day 4/5). The toy makes those abstract questions concr
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 agent_loop.py --selftest
+cd modules/M1-your-first-agent-loop/exercise && python3 agent_loop.py --selftest
 ```
 Director's lens (do all three):
 1. **Map the levels.** Place a current initiative on Day 1's Levels 0–4 (Reasoning →

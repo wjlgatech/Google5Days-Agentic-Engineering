@@ -22,7 +22,7 @@ planner's blast radius (max_steps, allow-listed tools, validated args). This is 
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 agent_loop.py --selftest
+cd modules/M1-your-first-agent-loop/exercise && python3 agent_loop.py --selftest
 ```
 Senior moves:
 1. **Bound it:** confirm `max_steps` prevents infinite loops; add a test that a pathological

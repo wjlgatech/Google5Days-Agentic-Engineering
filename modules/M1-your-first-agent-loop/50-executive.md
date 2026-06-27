@@ -23,7 +23,7 @@ proprietary tools and data, gated by which controls?"*
 
 Have someone run this in front of you (or do it — it needs nothing installed):
 ```bash
-cd exercise && python3 agent_loop.py --selftest   # all ✓ = it provably works
+cd modules/M1-your-first-agent-loop/exercise && python3 agent_loop.py --selftest   # all ✓ = it provably works
 ```
 Then ask your team **three questions** and watch whether they have crisp answers:
 1. *What is our deterministic "all-✓" test for this initiative?* (If none → it's a demo.)

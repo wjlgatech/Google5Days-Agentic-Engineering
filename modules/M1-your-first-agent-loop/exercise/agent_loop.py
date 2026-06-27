@@ -42,6 +42,9 @@ def tool_sunset(_: str) -> str:
     """A stand-in 'world' tool: returns a fixed fact. In a real agent this calls an API."""
     return "Sunset is roughly 8:15pm local in summer."
 
+# TOOLS is a *dict* (name -> function), not a list. To add your own tool you do TWO things:
+#   (1) register it here with a key:   TOOLS = {..., "shout": tool_shout}
+#   (2) teach the planner to pick it — add a rule in think() below (a tool nobody calls is dead).
 TOOLS = {"calculator": tool_calculator, "sunset": tool_sunset}
 
 # ---- ORCHESTRATION: the loop itself (Day 1 "nervous system"). ----
@@ -57,6 +60,10 @@ def think(mission: str, scratch: list) -> tuple[str, str, str] | None:
         return ("The mission contains arithmetic; I'll use the calculator.", "calculator", arith.group().strip())
     if not done_sun and "sunset" in m:
         return ("The mission asks about sunset; I'll use the sunset tool.", "sunset", "")
+    # YOUR TURN (exercise): add a rule for your new tool here, e.g.
+    #   done_shout = any(a.startswith("shout") for _, a, _ in scratch)
+    #   if not done_shout and "shout" in m:
+    #       return ("The mission says shout; I'll use the shout tool.", "shout", mission)
     return None  # nothing left to do -> exit the loop
 
 def run(mission: str, think_fn=think, max_steps: int = 6) -> dict:
