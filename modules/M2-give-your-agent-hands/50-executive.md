@@ -23,7 +23,7 @@ surprise bills, because tools had no contracts and no limits.
 
 Have someone run this in front of you (needs nothing installed):
 ```bash
-cd exercise && python3 tool_registry.py --selftest   # all ✓
+cd modules/M2-give-your-agent-hands/exercise && python3 tool_registry.py --selftest   # all ✓
 ```
 Then ask three questions about any agent initiative:
 1. *Which tools can this agent use, and who owns each one?*

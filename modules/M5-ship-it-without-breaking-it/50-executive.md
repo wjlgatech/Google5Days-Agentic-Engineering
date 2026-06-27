@@ -23,7 +23,7 @@ firefighting.
 
 Have someone run this in front of you (nothing to install):
 ```bash
-cd exercise && python3 deploy_gate.py   # PROMOTED / BLOCKED / ROLLED_BACK in one run
+cd modules/M5-ship-it-without-breaking-it/exercise && python3 deploy_gate.py   # PROMOTED / BLOCKED / ROLLED_BACK in one run
 ```
 Then ask three questions about any AI initiative heading to production:
 1. *What's the gate that stops a bad version from reaching customers?*

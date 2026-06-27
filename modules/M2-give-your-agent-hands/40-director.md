@@ -22,7 +22,7 @@ interoperability standard that makes this reuse real (the "do this specific thin
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 tool_registry.py --selftest
+cd modules/M2-give-your-agent-hands/exercise && python3 tool_registry.py --selftest
 ```
 Director's lens:
 1. **Inventory:** list your org's top 10 agent tools; mark each task-shaped vs. thin-wrapper,

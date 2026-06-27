@@ -22,7 +22,7 @@ to new eval case.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 trajectory_eval.py --selftest
+cd modules/M4-is-your-agent-any-good/exercise && python3 trajectory_eval.py --selftest
 ```
 Director's lens:
 1. **Define quality** for one initiative across the Four Pillars — what's the target for each?

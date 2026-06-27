@@ -22,7 +22,7 @@ trail, is a headline. Same feature, opposite outcomes — the difference is gove
 
 Have someone run this in front of you (nothing to install):
 ```bash
-cd exercise && python3 context_manager.py --selftest   # all ✓
+cd modules/M3-give-your-agent-memory/exercise && python3 context_manager.py --selftest   # all ✓
 ```
 Then ask three questions about any personalization initiative:
 1. *What do we remember about people, and for how long?* (retention)

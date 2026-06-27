@@ -22,7 +22,7 @@ from prod failure to new eval case.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 deploy_gate.py --selftest
+cd modules/M5-ship-it-without-breaking-it/exercise && python3 deploy_gate.py --selftest
 ```
 Director's lens:
 1. **Readiness map:** for one initiative, mark which of the AgentOps pillars (eval, CI/CD,

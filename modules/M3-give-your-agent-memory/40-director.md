@@ -22,7 +22,7 @@ against **memory poisoning**. The same `memory/` pattern is how this hub stores 
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 context_manager.py --selftest
+cd modules/M3-give-your-agent-memory/exercise && python3 context_manager.py --selftest
 ```
 Director's lens:
 1. **Data map:** for one agent, list what lands in session vs. long-term memory vs. RAG; mark

@@ -24,7 +24,7 @@ OpenTelemetry traces feeding online quality monitors.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 deploy_gate.py --selftest
+cd modules/M5-ship-it-without-breaking-it/exercise && python3 deploy_gate.py --selftest
 ```
 Senior moves:
 1. **Funnel phases:** split `gate` into pre-merge (fast subset) vs post-merge (full suite + load

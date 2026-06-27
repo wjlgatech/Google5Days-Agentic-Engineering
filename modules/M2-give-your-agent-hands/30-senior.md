@@ -21,7 +21,7 @@ everything past `registry.call` is testable, allow-listed, and typed.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 tool_registry.py --selftest
+cd modules/M2-give-your-agent-hands/exercise && python3 tool_registry.py --selftest
 ```
 Senior moves:
 1. **Allow-list + least privilege:** add a `permissions` field per tool; deny a call the caller

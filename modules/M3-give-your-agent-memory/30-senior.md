@@ -24,7 +24,7 @@ recall is a known failure.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 context_manager.py --selftest
+cd modules/M3-give-your-agent-memory/exercise && python3 context_manager.py --selftest
 ```
 Senior moves:
 1. **Isolation + provenance:** add a `user_id` scope to `MemoryStore`; prove one user can't

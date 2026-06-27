@@ -5,6 +5,21 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Fixed
+- **HJ1 cold-read sweep · M2–M5 exercises (all personas).** Extended the M1 walk-through to the
+  remaining four modules, verifying each runnable exercise end-to-end:
+  - **Wrong path (universal, 20 instances).** Every M2–M5 persona lesson said `cd exercise`,
+    which fails from the repo root the README quickstart leaves you in. All now use the full
+    `cd modules/<module>/exercise` path.
+  - **M3 false proof (15-explorer).** The "make `seat`≈`seats`" fix is real and visible in the
+    *demo* (`retrieve('seat preference')` top hit flips from "allergic to peanuts" → the seat
+    memory), but the lesson pointed the proof at `--selftest`, which is 8/8 green with or without
+    the fix — so a student couldn't tell their fix did anything. Repointed the proof at the demo
+    before/after, and added a *verified* self-test snippet (builds its own plural-"seats" memory;
+    ✗ before the fix, ✓ after) so the win is guarded by a green check, per the module's own habit.
+  - **Verified clean:** M2's "add `_track_shipment`" exercise is *not* a dead-tool trap (the
+    registry dispatches by name, so register + a self-test line genuinely suffices — confirmed by
+    simulation); M4/M5 15-explorer exercises are read-only (observe output), so only the path bug
+    applied. Gate still 102/102.
 - **HJ1 cold-read sweep · M1 exercises across all 5 personas.** A human walk-through of the M1
   path (the kind the 102-check gate can't perform) surfaced three classes of break, all fixed
   and each fix verified by simulating the student's edits and running the result:
