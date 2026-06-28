@@ -19,6 +19,8 @@ Never fake a green; an honest ❌ beats a bad fix.
 - `loop/` — the closed loop (`Intent→…→Decide`) + templates.
 - `memory/decisions/` + `memory/lessons/` — org memory; JSON validated against `schemas/`.
 - `schemas/` — structured-output contracts (module, tool, decision, lesson).
+- `index.html` — the human hub. Its `#guide` section is **agentic**: a client-side persona router and a live JS port of the M1 loop (both run offline). If `window.AGENT_BACKEND` is set it calls `webapp/`.
+- `webapp/` — optional FastAPI backend (`/api/agent`, `claude-opus-4-8`, structured output) the landing page upgrades to when hosted with an `ANTHROPIC_API_KEY`; absent/unconfigured → page falls back to client-side routing. Not a learning module; not gated by `check.sh`.
 
 ## How to extend (the compounding motion)
 1. **Add a module:** copy `modules/M1-your-first-agent-loop/`; fill 7 parts × 5 personas; add a runnable artifact + `--selftest`. Use the **exact** part headings the check greps for (Plain / Concrete example / Hands-on / Real-world / Failure mode / Measurable output / Next step).

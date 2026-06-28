@@ -1,0 +1,8 @@
+# Python bytecode (exercises are run directly; compiled caches are noise)
+__pycache__/
+*.pyc
+
+# Local tooling / scratch
+.gstack/
+webapp/.venv/
+.env
