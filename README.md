@@ -68,6 +68,7 @@ Google5Days-Agentic-Engineering/
 ├── loop/                  ← PILLAR 3: the closed-loop engine + per-stage templates
 ├── memory/                ← reusable org memory: decisions/ + lessons/ (the compounding store)
 ├── schemas/               ← structured-output contracts (module / tool / decision / lesson)
+├── tests/                 ← pytest wrappers around each module's --selftest (dev-facing test view)
 └── scripts/check.sh       ← the deterministic verification harness (run it; drive it green)
 ```
 

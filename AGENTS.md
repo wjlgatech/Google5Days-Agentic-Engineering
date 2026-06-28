@@ -19,6 +19,7 @@ Never fake a green; an honest ❌ beats a bad fix.
 - `loop/` — the closed loop (`Intent→…→Decide`) + templates.
 - `memory/decisions/` + `memory/lessons/` — org memory; JSON validated against `schemas/`.
 - `schemas/` — structured-output contracts (module, tool, decision, lesson).
+- `tests/` — `pytest` wrappers that import each `modules/M*/exercise/*.py` and assert its `selftest()` returns 0 (auto-discovers new modules). The authoritative check is still `scripts/check.sh` (O10); this is the dev-facing test view. Run: `pytest tests/ -q`.
 - `index.html` — the human hub. Its `#guide` section is **agentic**: a client-side persona router and a live JS port of the M1 loop (both run offline). If `window.AGENT_BACKEND` is set it calls `webapp/`.
 - `webapp/` — optional FastAPI backend (`/api/agent`, `claude-opus-4-8`, structured output) the landing page upgrades to when hosted with an `ANTHROPIC_API_KEY`; absent/unconfigured → page falls back to client-side routing. Not a learning module; not gated by `check.sh`.
 
