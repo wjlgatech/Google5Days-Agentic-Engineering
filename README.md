@@ -49,6 +49,9 @@ Learn → Decide` — is those five days as **one repeatable, compounding loop**
 Google5Days-Agentic-Engineering/
 ├── README.md              ← you are here (the operating system)
 ├── index.html             ← self-contained hub for humans (zero deps, GitHub-Pages ready)
+│                             — incl. an AGENTIC landing panel: an in-browser persona router
+│                               + a live M1 agent loop (offline; upgrades to a live model via webapp/)
+├── webapp/                ← OPTIONAL LLM backend (FastAPI + Claude) the landing page calls when hosted
 ├── docs/
 │   ├── 2025_Day_*.pdf      ← the 5 source whitepapers
 │   ├── PRINCIPLES.md       ← distilled spine, provenance preserved (fact/decision/assumption)

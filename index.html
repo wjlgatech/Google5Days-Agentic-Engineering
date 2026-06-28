@@ -46,6 +46,13 @@
   .pill{font-size:12px;color:var(--warn);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
   code.k{background:#0a0d12;border:1px solid var(--line);border-radius:7px;padding:2px 7px;color:#cdd6e0;font-size:13.5px}
   footer{color:var(--mut);font-size:13.5px;padding:40px 0 60px;border-top:1px solid var(--line);margin-top:20px}
+  .ask input,.ask select{background:#0a0d12;border:1px solid var(--line);color:var(--ink);
+    border-radius:9px;padding:9px 11px;font:14px inherit;margin:5px 6px 5px 0}
+  .ask input{min-width:min(100%,260px)} .ask label{font-size:12.5px;color:var(--mut);display:block;margin-top:6px}
+  .ask button{cursor:pointer;font:inherit} .ask .btn{margin-top:8px}
+  .out{display:none;margin-top:12px;white-space:pre-wrap}
+  .out a{color:var(--accent2)} .out b{color:var(--ink)}
+  .live{cursor:default} .live h3{margin-top:.5em}
 </style>
 </head>
 <body>
@@ -63,6 +70,41 @@
     <a class="btn s" href="docs/OBJECTIVES.md">How “done” is checked</a>
   </div>
 </header>
+
+<section id="guide">
+  <h2>0 · Talk to the hub — a live agent finds your path</h2>
+  <div class="two">
+    <div class="card live ask">
+      <div class="ico">🧭</div><h3>Tell the agent your level &amp; goal</h3>
+      <div class="who">It runs a real loop — read intent → pick a route → answer — and sends you to the
+        right module + persona path. No server needed; it thinks in your browser.</div>
+      <label for="lvl">Your level</label>
+      <select id="lvl">
+        <option value="15-explorer">🧒 15 · Explorer</option>
+        <option value="20-junior" selected>🛠️ 20 · Junior Eng</option>
+        <option value="30-senior">🏗️ 30 · Senior Eng</option>
+        <option value="40-director">🎯 40 · AI Director</option>
+        <option value="50-executive">💼 50 · Executive</option>
+      </select>
+      <label for="goal">What do you want to do?</label>
+      <input id="goal" placeholder="e.g. give my bot memory · prove it works · ship safely">
+      <button class="btn p" id="ask">Route me →</button>
+      <div id="answer" class="loop out" aria-live="polite"></div>
+    </div>
+    <div class="card live ask">
+      <div class="ico">🧠</div><h3>Watch an agent think (live)</h3>
+      <div class="who">The real M1 loop, ported to the browser: it reads a mission, picks a tool,
+        observes the result, and repeats — the exact machine you'll build in Module M1.</div>
+      <label for="mission">Mission</label>
+      <input id="mission" value="What is 6 * 7, and when is sunset?">
+      <button class="btn s" id="runloop">▶ Run the loop</button>
+      <div id="trace" class="loop out" aria-live="polite"></div>
+    </div>
+  </div>
+  <p style="margin-top:14px;color:var(--mut);font-size:13.5px">Both panels run client-side and work
+    offline. If a live LLM backend is configured (<code class="k">window.AGENT_BACKEND</code> →
+    <a href="webapp/">webapp/</a>), the router upgrades to a real Claude model automatically.</p>
+</section>
 
 <section id="personas">
   <h2>1 · Plug in at your level</h2>
@@ -156,5 +198,108 @@ $ bash scripts/check.sh&nbsp;&nbsp;&nbsp;# the deterministic gate — drive it g
 </footer>
 
 </div>
+
+<script>
+// ── The hub's landing-page agent: two small loops that run entirely in the browser. ──
+// HYBRID: if a live LLM backend is configured, the router calls it; otherwise it routes locally.
+// Set window.AGENT_BACKEND = "https://your-host" (see webapp/) to upgrade to a real Claude model.
+
+// ---- PANEL 1: persona router — a rule-based agent loop (read intent → pick route → answer) ----
+const MODULES = [
+  {id:"M5", dir:"M5-ship-it-without-breaking-it", name:"Ship It Without Breaking It",
+   kw:["ship","deploy","prod","production","release","safe","safely","gate","canary","rollback","launch","ops"]},
+  {id:"M4", dir:"M4-is-your-agent-any-good", name:"Is Your Agent Any Good?",
+   kw:["quality","test","eval","evaluate","good","prove","works","trajectory","score","measure","judge","benchmark"]},
+  {id:"M3", dir:"M3-give-your-agent-memory", name:"Give Your Agent Memory",
+   kw:["memory","remember","context","session","recall","forget","history","personal","persist"]},
+  {id:"M2", dir:"M2-give-your-agent-hands", name:"Give Your Agent Hands",
+   kw:["tool","tools","hands","action","api","function","mcp","integrate","calculator","search","do more"]},
+  {id:"M1", dir:"M1-your-first-agent-loop", name:"Your First Agent Loop",
+   kw:["loop","start","begin","first","build","learn","understand","what is","agent"]},
+];
+function routeLocally(level, goal){
+  const g = (goal || "").toLowerCase();
+  let pick = null, hit = "";
+  for (const m of MODULES){ const k = m.kw.find(k => g.includes(k)); if (k){ pick = m; hit = k; break; } }
+  if (!pick){ pick = MODULES[4]; hit = "(no keyword — starting at the beginning)"; }
+  const mod = `modules/${pick.dir}/${level}.md`;
+  return { goal: goal || "(none given)", level, module: pick, hit,
+           moduleHref: mod, personaHref: `personas/${level}.md` };
+}
+function renderRoute(box, r){
+  const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  box.innerHTML =
+    `① GOAL: ${esc(r.goal)}  <span style="color:#8b97a7">(level ${esc(r.level)})</span>\n` +
+    `  🧠 matched <b>${esc(r.hit)}</b> → ${esc(r.module.id)}\n` +
+    `  🔧 route('${esc(r.level)}') -> ${esc(r.moduleHref)}\n\n` +
+    `⑤ START HERE → <a href="${r.moduleHref}"><b>${esc(r.module.id)} · ${esc(r.module.name)}</b></a>\n` +
+    `   your path → <a href="${r.personaHref}">${esc(r.level)}</a>` +
+    (r.via ? `\n\n<span style="color:#8b97a7">— routed by ${esc(r.via)}</span>` : "");
+  box.style.display = "block";
+}
+async function ask(){
+  const level = document.getElementById("lvl").value;
+  const goal  = document.getElementById("goal").value.trim();
+  const box   = document.getElementById("answer");
+  // HYBRID HOOK: prefer a live backend when one is configured; fall back to the local loop.
+  if (window.AGENT_BACKEND){
+    try{
+      const res = await fetch(window.AGENT_BACKEND.replace(/\/$/,"") + "/api/agent", {
+        method:"POST", headers:{"content-type":"application/json"},
+        body: JSON.stringify({ level, goal })
+      });
+      if (res.ok){
+        const d = await res.json();
+        const m = MODULES.find(x => x.id === d.module) || MODULES[4];
+        renderRoute(box, { goal: goal || "(none given)", level, module:m, hit:d.reason || "LLM",
+          moduleHref:`modules/${m.dir}/${level}.md`, personaHref:`personas/${level}.md`, via:"live Claude backend" });
+        return;
+      }
+    }catch(e){ /* backend down → fall through to local */ }
+  }
+  renderRoute(box, routeLocally(level, goal));
+}
+
+// ---- PANEL 2: the M1 agent loop, ported to JS (mirrors exercise/agent_loop.py) ----
+function toolCalculator(expr){
+  const m = String(expr).match(/(-?\d+(?:\.\d+)?)\s*([*+/-])\s*(-?\d+(?:\.\d+)?)/);
+  if (!m) return "ERROR: calculator needs a plain expression like '6 * 7'. Retry with digits and + - * / only.";
+  const a = parseFloat(m[1]), b = parseFloat(m[3]);
+  const r = {"+":a+b,"-":a-b,"*":a*b,"/": b? a/b : NaN}[m[2]];
+  return String(r);
+}
+function toolSunset(){ return "Sunset is roughly 8:15pm local in summer."; }
+const TOOLS = { calculator: toolCalculator, sunset: toolSunset };
+function think(mission, scratch){
+  const m = mission.toLowerCase().replace(/x/g,"*");
+  const doneCalc = scratch.some(s => s.action.startsWith("calculator"));
+  const doneSun  = scratch.some(s => s.action.startsWith("sunset"));
+  const arith = m.match(/-?\d+\s*[*+/-]\s*-?\d+/);
+  if (!doneCalc && arith) return ["The mission contains arithmetic; I'll use the calculator.","calculator",arith[0].trim()];
+  if (!doneSun && m.includes("sunset")) return ["The mission asks about sunset; I'll use the sunset tool.","sunset",""];
+  return null; // nothing left to do -> exit the loop
+}
+function runLoop(){
+  const mission = document.getElementById("mission").value.trim() || "What is 6 * 7, and when is sunset?";
+  const box = document.getElementById("trace");
+  const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const scratch = []; let out = `① MISSION: ${esc(mission)}\n\n`;
+  for (let step = 1; step <= 6; step++){
+    const plan = think(mission, scratch); if (!plan) break;
+    const [thought, tool, input] = plan;
+    const obs = TOOLS[tool] ? TOOLS[tool](input) : `ERROR: no tool '${tool}'`;
+    scratch.push({ action: `${tool}(${JSON.stringify(input)})`, obs });
+    out += `  step ${step}: 🧠 ${esc(thought)}\n           🔧 ${tool}(${esc(JSON.stringify(input))}) -> ${esc(obs)}\n`;
+  }
+  const answer = scratch.map(s => s.obs).join(" ") || "Nothing to do.";
+  out += `\n⑤ ANSWER: ${esc(answer)}`;
+  box.innerHTML = out; box.style.display = "block";
+}
+
+document.getElementById("ask").addEventListener("click", ask);
+document.getElementById("goal").addEventListener("keydown", e => { if (e.key === "Enter") ask(); });
+document.getElementById("runloop").addEventListener("click", runLoop);
+document.getElementById("mission").addEventListener("keydown", e => { if (e.key === "Enter") runLoop(); });
+</script>
 </body>
 </html>

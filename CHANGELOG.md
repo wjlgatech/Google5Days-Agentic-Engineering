@@ -4,6 +4,29 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 
 ## [Unreleased]
 
+### Added
+- **Agentic landing page (`index.html` `#guide`) + optional LLM backend (`webapp/`).** The hub's
+  landing now opens with a working agent, not just links: (1) a **persona router** — a rule-based
+  agent loop that reads the visitor's level + goal and routes them to the right module + persona
+  path, and (2) a **live M1 agent loop** ported to JS (the calculator/sunset tools + rule-based
+  planner from `agent_loop.py`), so a visitor watches an agent pick tools and think in-browser.
+  Both run client-side with zero dependencies and work offline. **Hybrid upgrade:** when
+  `window.AGENT_BACKEND` is set, the router calls `webapp/app.py` — a FastAPI `/api/agent`
+  endpoint using `claude-opus-4-8` with a JSON-schema structured output; with no API key it
+  returns 503 and the page falls back to client-side routing, so the site never breaks. Verified:
+  11/11 logic checks in Node + a real headless-browser run (no console errors, both panels render
+  correct output, recommended link resolves to an existing file). Gate still 102/102. Added a
+  root `.gitignore` (`__pycache__/`, `.gstack/`, `.env`) and untracked churning `.pyc` caches.
+
+### Investigated / Rejected
+- **Automated OOP refactor of the exercises (`anyagent refactor`, score 57→68).** Measured: it
+  raised the OOP-quality metric by stripping the Day-citation comments, the loop-stage
+  annotations, and the `YOUR TURN` scaffolding the lessons depend on, and churned quotes/regex
+  that desync the prose lessons. **Rejected** — on a *teaching* repo a higher OOP score on
+  deliberately-simple artifacts is the wrong target; it would undo the HJ1 lesson↔code sync. The
+  honest, pedagogy-safe improvement (the real "testing 0%" gap) is a `tests/` dir of pytest
+  wrappers around the existing `--selftest`s — additive, leaves the teaching code untouched.
+
 ### Changed
 - **HJ2 framing pass · director/executive altitude leak (all 5 modules).** A five-reader audit
   (one per module, shared altitude rubric) confirmed persona differentiation is genuinely real
