@@ -5,6 +5,13 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Added
+- **`tests/` — the honest "10x" quality lift (testing 0% → 57%).** `pytest` wrappers that import
+  each `modules/M*/exercise/*.py` and assert its `selftest()` returns 0 (auto-discovers new
+  modules; a presence test guards against a missing artifact). This is the pedagogy-safe fix the
+  rejected `anyagent refactor` should have been: `anyagent analyze` now scores the repo **64/100**
+  (testing 0→57%) — close to the refactor's 68, but earned by *adding* real test files rather than
+  *deleting* the teaching comments. The authoritative check is still `scripts/check.sh` (O10);
+  `tests/` is the dev-facing/CI view of the same selftests. Run: `pytest tests/ -q` (6 passed).
 - **Agentic landing page (`index.html` `#guide`) + optional LLM backend (`webapp/`).** The hub's
   landing now opens with a working agent, not just links: (1) a **persona router** — a rule-based
   agent loop that reads the visitor's level + goal and routes them to the right module + persona
