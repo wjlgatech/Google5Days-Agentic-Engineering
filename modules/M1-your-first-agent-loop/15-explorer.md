@@ -21,12 +21,21 @@ print each step.
 ## Hands-on exercise (do this now)
 
 ```bash
-cd exercise
+cd modules/M1-your-first-agent-loop/exercise    # from the repo root
 python3 agent_loop.py "What is 8 * 9, and what time is sunset roughly?"
 ```
 You'll see lines like `🧠 thought … 🔧 calculator('8 * 9') -> 72`. **That printout is the
-agent thinking out loud.** Now make it smarter: open `agent_loop.py`, copy the calculator
-tool, and make a `tool_shout` that returns text in CAPS. Add it to the `TOOLS` list. Run again.
+agent thinking out loud.**
+
+Now make it smarter — adding a tool takes **three** edits in `agent_loop.py` (a tool nobody
+calls is dead code, so don't skip step 3):
+1. **Write it.** Copy `tool_calculator` and make `def tool_shout(text): return text.upper()`.
+2. **Register it.** Add it to the `TOOLS` dict *with a name key*: `"shout": tool_shout`.
+3. **Teach the planner to pick it.** In `think()`, add a rule (there's a commented `YOUR TURN`
+   template showing exactly this). Without a rule, the agent never chooses your tool.
+
+Then run a mission that triggers it: `python3 agent_loop.py "shout your name"` — you should see
+`🔧 shout(...) -> YOUR NAME`.
 
 ## Real-world use case
 
@@ -45,8 +54,12 @@ tells the agent how to fix its input* instead of crashing. Good tools fail loudl
 ```bash
 python3 agent_loop.py --selftest   # prints ✓/✗ for each check; you want all ✓
 ```
-**You succeeded when:** the self-test is all ✓ *and* your new `tool_shout` works. That green
-check is your trophy — a thing that *proves* it works, not just "looks like it works."
+**You succeeded when:** the self-test is all ✓ *and* your `shout` tool fires on the
+`"shout your name"` mission above. Don't trust your eyes — *prove* it: add one line to the
+`checks` dict in `selftest()`, e.g.
+`"shout works": run("shout hi")["answer"].endswith("HI")`, then re-run `--selftest` and watch
+your own check go green. That green check is your trophy — a thing that *proves* it works, not
+just "looks like it works."
 
 ## Next step
 

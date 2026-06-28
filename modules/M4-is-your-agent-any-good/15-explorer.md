@@ -21,7 +21,7 @@ because it read the trajectory.
 ## Hands-on exercise
 
 ```bash
-cd exercise
+cd modules/M4-is-your-agent-any-good/exercise
 python3 trajectory_eval.py            # watch GOOD score 1.0 and BAD score 0.17
 python3 trajectory_eval.py --selftest # all ✓
 ```

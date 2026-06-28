@@ -19,10 +19,11 @@ named owner, a typed contract, a permission scope, and a risk class — so a new
 approved tools* instead of re-wrapping the same API five insecure ways. MCP is the
 interoperability standard that makes this reuse real (the "do this specific thing" protocol).
 
-## Hands-on exercise
+## Hands-on (your team runs it — you read the result)
 
+You don't type this — have an engineer run it in front of you (needs nothing installed) and read the result together:
 ```bash
-cd exercise && python3 tool_registry.py --selftest
+cd modules/M2-give-your-agent-hands/exercise && python3 tool_registry.py --selftest
 ```
 Director's lens:
 1. **Inventory:** list your org's top 10 agent tools; mark each task-shaped vs. thin-wrapper,

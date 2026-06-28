@@ -19,11 +19,11 @@ Now picture every action your agents can take, each with — or without — that
 The Day-5 cautionary tales are real: agents tricked into giving products away, or running up
 surprise bills, because tools had no contracts and no limits.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (needs nothing installed):
 ```bash
-cd exercise && python3 tool_registry.py --selftest   # all ✓
+cd modules/M2-give-your-agent-hands/exercise && python3 tool_registry.py --selftest   # all ✓
 ```
 Then ask three questions about any agent initiative:
 1. *Which tools can this agent use, and who owns each one?*

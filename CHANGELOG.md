@@ -4,6 +4,52 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 
 ## [Unreleased]
 
+### Changed
+- **HJ2 framing pass · director/executive altitude leak (all 5 modules).** A five-reader audit
+  (one per module, shared altitude rubric) confirmed persona differentiation is genuinely real
+  (build→debug→architect→operate→fund, scored 8–9.5/10) — but found one systemic drift: the
+  **40-director** lessons showed a CLI block under a bare "Hands-on exercise" header with no
+  delegation guard, and the **50-executive** lessons implied the exec runs code ("yes, you too",
+  and M1's "or do it"). Reframed all 10 headings to signal delegation ("Hands-on — your team runs
+  it, you read the result" / "someone runs it, you just watch"), added the missing "have an
+  engineer run it in front of you" guard to every director lesson, and removed M1-exec's "or do
+  it" invitation. Also trimmed a meta sentence in M1/15-explorer that overshot explorer altitude.
+  Headings retain the "Hands-on" token the O4 gate keys on; gate still 102/102.
+
+### Fixed
+- **HJ1 cold-read sweep · M2–M5 exercises (all personas).** Extended the M1 walk-through to the
+  remaining four modules, verifying each runnable exercise end-to-end:
+  - **Wrong path (universal, 20 instances).** Every M2–M5 persona lesson said `cd exercise`,
+    which fails from the repo root the README quickstart leaves you in. All now use the full
+    `cd modules/<module>/exercise` path.
+  - **M3 false proof (15-explorer).** The "make `seat`≈`seats`" fix is real and visible in the
+    *demo* (`retrieve('seat preference')` top hit flips from "allergic to peanuts" → the seat
+    memory), but the lesson pointed the proof at `--selftest`, which is 8/8 green with or without
+    the fix — so a student couldn't tell their fix did anything. Repointed the proof at the demo
+    before/after, and added a *verified* self-test snippet (builds its own plural-"seats" memory;
+    ✗ before the fix, ✓ after) so the win is guarded by a green check, per the module's own habit.
+  - **Verified clean:** M2's "add `_track_shipment`" exercise is *not* a dead-tool trap (the
+    registry dispatches by name, so register + a self-test line genuinely suffices — confirmed by
+    simulation); M4/M5 15-explorer exercises are read-only (observe output), so only the path bug
+    applied. Gate still 102/102.
+- **HJ1 cold-read sweep · M1 exercises across all 5 personas.** A human walk-through of the M1
+  path (the kind the 102-check gate can't perform) surfaced three classes of break, all fixed
+  and each fix verified by simulating the student's edits and running the result:
+  - **Dead-tool trap (15-explorer, 20-junior).** The "add your own tool" exercises pointed only
+    at the `TOOLS` registry, but the rule-based `think()` planner has no rule to *select* a new
+    tool — so a student who followed the steps saw zero change. Both lessons now spell out three
+    edits (write → register-with-key → add a planner rule) and `agent_loop.py` carries `YOUR TURN`
+    guide comments at both spots (comments only; shipped self-test unchanged, still 6/6).
+  - **False debugging promise (20-junior).** The lesson said change `\d+`→`\d` and "watch a test
+    go ✗" — but the self-test mission `6 * 7` is single-digit, so the match is identical and every
+    test stayed green. Replaced with the verified break `\d+`→`\d\d+` (drops single-digit matches →
+    `calculator used` and `answer has 42` go red), with the trajectory explanation.
+  - **Wrong path (all 5 personas).** Lessons said `cd exercise`, which fails from the repo root the
+    README quickstart leaves you in. Now `cd modules/M1-your-first-agent-loop/exercise`.
+  Also: the `TOOLS` "list" → "dict (needs a name key)" wording, and a self-test line for the
+  student's own tool so their addition is *proven green*, not eyeballed — closing the "grow the
+  test, don't just use it" habit the personas preach. Gate still 102/102.
+
 ### Added
 - **M5 · Ship It Without Breaking It (Prototype → Production)** — fifth and final module,
   completing all 5 whitepaper days: the 7 parts × 5 personas + a runnable, zero-dependency

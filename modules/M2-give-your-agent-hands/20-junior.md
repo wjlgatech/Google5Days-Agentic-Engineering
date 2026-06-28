@@ -21,7 +21,7 @@ failure is a stack trace. Task-shaped + validated is the difference.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 tool_registry.py --selftest
+cd modules/M2-give-your-agent-hands/exercise && python3 tool_registry.py --selftest
 ```
 Junior reps:
 1. **Add validation:** make `refund_order` reject `amount <= 0` with a teaching error; add a

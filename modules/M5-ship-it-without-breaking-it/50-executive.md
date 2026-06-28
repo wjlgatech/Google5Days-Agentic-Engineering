@@ -19,11 +19,11 @@ when something does break in production, it's turned into a test — so the syst
 trustworthy over time instead of decaying. That ratchet is the difference between compounding and
 firefighting.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (nothing to install):
 ```bash
-cd exercise && python3 deploy_gate.py   # PROMOTED / BLOCKED / ROLLED_BACK in one run
+cd modules/M5-ship-it-without-breaking-it/exercise && python3 deploy_gate.py   # PROMOTED / BLOCKED / ROLLED_BACK in one run
 ```
 Then ask three questions about any AI initiative heading to production:
 1. *What's the gate that stops a bad version from reaching customers?*

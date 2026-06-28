@@ -21,14 +21,21 @@ you don't guess — you read the trajectory and see the exact step that broke.
 ## Hands-on exercise
 
 ```bash
-cd exercise
+cd modules/M1-your-first-agent-loop/exercise    # from the repo root
 python3 agent_loop.py --selftest        # green baseline
 ```
 Now practice the real junior-engineer skill — **debugging via the trajectory**:
-1. Break the regex in `think()` (change `\d+` to `\d`). Re-run. Watch a test go ✗.
-2. Read the printed trajectory: *which step* produced the bad observation?
+1. Break the regex in `think()` — change `\d+` to `\d\d+` (now it only matches *multi-digit*
+   numbers, so the single-digit `6 * 7` mission no longer matches). Re-run. Watch `calculator
+   used` and `answer has 42` go ✗.
+2. Read the printed trajectory: *which step* produced the bad observation? (The calculator
+   rule never fired — the mission fell straight through to the sunset rule.)
 3. Fix it. Re-run to green. You just did root-cause debugging on an agent.
-Then **add a tool** (`tool_wordcount`) with its own self-test assertion.
+
+Then **add a tool** (`tool_wordcount`) — three edits: write it, register it in the `TOOLS`
+*dict* with a key (`"wordcount": tool_wordcount`), and add a rule in `think()` so the planner
+actually selects it (a tool with no rule never runs — see the `YOUR TURN` comment). Prove it
+with its own self-test assertion in `selftest()`.
 
 ## Real-world use case
 

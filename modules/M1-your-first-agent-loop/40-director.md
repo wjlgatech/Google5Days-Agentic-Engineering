@@ -19,10 +19,11 @@ fleet of these, each with tools, identities, and eval gates. The questions that 
 output? What's the human-in-the-loop checkpoint? How fast can we turn a production failure
 into a regression test?* (Day 4/5). The toy makes those abstract questions concrete.
 
-## Hands-on exercise
+## Hands-on (your team runs it — you read the result)
 
+You don't type this — have an engineer run it in front of you (needs nothing installed) and read the result together:
 ```bash
-cd exercise && python3 agent_loop.py --selftest
+cd modules/M1-your-first-agent-loop/exercise && python3 agent_loop.py --selftest
 ```
 Director's lens (do all three):
 1. **Map the levels.** Place a current initiative on Day 1's Levels 0–4 (Reasoning →

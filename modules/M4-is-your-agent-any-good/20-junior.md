@@ -21,7 +21,7 @@ answer string — it comes from grading the trajectory. And `pairwise(GOOD, BAD)
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 trajectory_eval.py --selftest
+cd modules/M4-is-your-agent-any-good/exercise && python3 trajectory_eval.py --selftest
 ```
 Junior reps:
 1. **Add a check:** detect a *missing* required tool (the mission needed a tool that was never

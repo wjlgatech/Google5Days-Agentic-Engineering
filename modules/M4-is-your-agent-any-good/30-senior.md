@@ -22,7 +22,7 @@ online monitors that alert when a quality score drifts below baseline.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 trajectory_eval.py --selftest
+cd modules/M4-is-your-agent-any-good/exercise && python3 trajectory_eval.py --selftest
 ```
 Senior moves:
 1. **Trajectory adherence:** add a check that the agent followed a required plan order (e.g. must

@@ -21,7 +21,7 @@ BACK**. You'll watch all three happen in one run.
 ## Hands-on exercise
 
 ```bash
-cd exercise
+cd modules/M5-ship-it-without-breaking-it/exercise
 python3 deploy_gate.py            # watch PROMOTED / BLOCKED / ROLLED_BACK
 python3 deploy_gate.py --selftest # all ✓
 ```

@@ -19,11 +19,11 @@ resolves a customer ticket, reconciles an invoice, or drafts a contract. One pat
 P&L lines. The strategic question is never "which model?" — it's *"which workflows, with which
 proprietary tools and data, gated by which controls?"*
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
-Have someone run this in front of you (or do it — it needs nothing installed):
+Have someone run this in front of you (it needs nothing installed):
 ```bash
-cd exercise && python3 agent_loop.py --selftest   # all ✓ = it provably works
+cd modules/M1-your-first-agent-loop/exercise && python3 agent_loop.py --selftest   # all ✓ = it provably works
 ```
 Then ask your team **three questions** and watch whether they have crisp answers:
 1. *What is our deterministic "all-✓" test for this initiative?* (If none → it's a demo.)

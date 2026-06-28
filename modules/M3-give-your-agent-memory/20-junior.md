@@ -21,7 +21,7 @@ That budget loop is context-rot defense you can actually unit-test.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 context_manager.py --selftest
+cd modules/M3-give-your-agent-memory/exercise && python3 context_manager.py --selftest
 ```
 Junior reps:
 1. **Crude stemming:** make `_sig` strip a trailing `s` so `seat`≈`seats`; add a test that

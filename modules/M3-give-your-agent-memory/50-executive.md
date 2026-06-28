@@ -18,11 +18,11 @@ shouldn't." Now scale it: an agent that remembers a customer is allergic to pean
 them is gold; the same system leaking that across customers, or keeping it forever with no audit
 trail, is a headline. Same feature, opposite outcomes — the difference is governance.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (nothing to install):
 ```bash
-cd exercise && python3 context_manager.py --selftest   # all ✓
+cd modules/M3-give-your-agent-memory/exercise && python3 context_manager.py --selftest   # all ✓
 ```
 Then ask three questions about any personalization initiative:
 1. *What do we remember about people, and for how long?* (retention)

@@ -19,10 +19,11 @@ standards (canary %, rollback SLA), an observability standard (logs/traces/metri
 embedded from day one (three-layer defense, guardrails, secrets in a vault), and a 48-hour SLA
 from prod failure to new eval case.
 
-## Hands-on exercise
+## Hands-on (your team runs it — you read the result)
 
+You don't type this — have an engineer run it in front of you (needs nothing installed) and read the result together:
 ```bash
-cd exercise && python3 deploy_gate.py --selftest
+cd modules/M5-ship-it-without-breaking-it/exercise && python3 deploy_gate.py --selftest
 ```
 Director's lens:
 1. **Readiness map:** for one initiative, mark which of the AgentOps pillars (eval, CI/CD,

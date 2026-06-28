@@ -21,7 +21,7 @@ failure as a golden case so the grown suite blocks the regression next time.
 ## Hands-on exercise
 
 ```bash
-cd exercise && python3 deploy_gate.py --selftest
+cd modules/M5-ship-it-without-breaking-it/exercise && python3 deploy_gate.py --selftest
 ```
 Junior reps:
 1. **Tighten the gate:** require `pass_rate >= 0.95` instead of all-pass; test it on an isolated

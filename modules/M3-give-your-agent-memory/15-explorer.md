@@ -22,7 +22,7 @@ that mattered*.
 ## Hands-on exercise
 
 ```bash
-cd exercise
+cd modules/M3-give-your-agent-memory/exercise
 python3 context_manager.py            # watch it save, summarize, and recall
 python3 context_manager.py --selftest # all ✓
 ```
@@ -43,10 +43,23 @@ the few memories that matter* for this question.
 
 ## Measurable output
 
+The real proof here is the **demo line**, not the self-test (the self-test is green either way —
+it doesn't yet check this). Run the demo before and after your fix and watch the top hit change:
 ```bash
-python3 context_manager.py --selftest   # all ✓, including after your seat≈seats fix
+python3 context_manager.py | grep "seat preference"
+# BEFORE your fix:  top hit is "I'm allergic to peanuts"   ← wrong
+# AFTER  your fix:  top hit is "...I prefer window seats"   ← the seat memory wins
 ```
-**You win when** every check is ✓ and your fix makes the demo recall the seat memory correctly.
+**You win when** that top hit flips to the seat memory. Then make it *stick* — add a check to
+`selftest()` that builds its own plural-"seats" memory so it actually tests stemming:
+```python
+ms = MemoryStore()
+ms.consolidate("User loves window seats", 0.5, 1, "chat")
+ms.consolidate("Allergic to peanuts", 0.9, 1, "profile")
+checks["seat≈seats recall"] = "seats" in ms.retrieve("seat preference", now=2)[0].text
+```
+Without your fix this check is ✗ (the peanut memory wins on importance); with it, ✓. Now your
+fix is *guarded by a green check* — not just something you saw once.
 
 ## Next step
 

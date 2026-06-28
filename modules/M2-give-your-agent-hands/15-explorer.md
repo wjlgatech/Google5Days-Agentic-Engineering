@@ -21,7 +21,7 @@ fixes itself. That's the whole magic of M2.
 ## Hands-on exercise
 
 ```bash
-cd exercise
+cd modules/M2-give-your-agent-hands/exercise
 python3 tool_registry.py            # watch good calls AND helpful errors
 python3 tool_registry.py --selftest # get all ✓
 ```

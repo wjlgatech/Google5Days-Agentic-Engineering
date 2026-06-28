@@ -18,11 +18,11 @@ wasn't allowed to. Only looking at the final answer, they seem equal — and you
 Evaluating the path, one passes and one fails. That's the difference between a program that compounds
 trust and one that quietly degrades until it embarrasses you in front of a customer or regulator.
 
-## Hands-on exercise (yes, you too)
+## Hands-on (someone runs it — 10 seconds, you just watch)
 
 Have someone run this in front of you (nothing to install):
 ```bash
-cd exercise && python3 trajectory_eval.py   # GOOD passes (1.0), BAD fails (0.17)
+cd modules/M4-is-your-agent-any-good/exercise && python3 trajectory_eval.py   # GOOD passes (1.0), BAD fails (0.17)
 ```
 Then ask three questions about any AI initiative:
 1. *How do we measure "good" — beyond "it answered"?* (the four dimensions)
