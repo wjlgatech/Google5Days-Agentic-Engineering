@@ -5,6 +5,18 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Added
+- **Live LLM backend — deployed to Vercel, free, and wired into the page.** The guide agent's
+  backend now runs at `https://webapp-nu-hazel.vercel.app/api/agent` and `index.html` points
+  `window.AGENT_BACKEND` at it, so the persona router uses a **real model** (not just keyword
+  matching) out of the box. Per the `free-llm` playbook it calls **Google Gemini's free tier**
+  (`gemini-2.5-flash-lite`, OpenAI-compatible) — no paid key, no card, ~1,500 req/day; the browser
+  hits our backend, which calls Gemini **server-to-server** (no CORS issue), and the free tier
+  means an abused public endpoint just rate-limits (no bill). Fallback chain: **Gemini → in-browser
+  rule-based router** (503/502/timeout → page routes client-side; never breaks). Refactor: routing
+  logic extracted to `webapp/guide.py` (stdlib only), shared by `api/agent.py` (Vercel function)
+  and `app.py` (local FastAPI); dropped the `anthropic` dep. Verified live: `POST /api/agent`
+  returns correct routing, and a real headless-browser run (page → Vercel → Gemini) routed
+  "don't regress when we ship" → M5, tagged "routed by live LLM backend."
 - **`tests/` — the honest "10x" quality lift (testing 0% → 57%).** `pytest` wrappers that import
   each `modules/M*/exercise/*.py` and assert its `selftest()` returns 0 (auto-discovers new
   modules; a presence test guards against a missing artifact). This is the pedagogy-safe fix the

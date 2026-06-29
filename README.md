@@ -51,7 +51,8 @@ Google5Days-Agentic-Engineering/
 ├── index.html             ← self-contained hub for humans (zero deps, GitHub-Pages ready)
 │                             — incl. an AGENTIC landing panel: an in-browser persona router
 │                               + a live M1 agent loop (offline; upgrades to a live model via webapp/)
-├── webapp/                ← OPTIONAL LLM backend (FastAPI + Claude) the landing page calls when hosted
+├── webapp/                ← live LLM backend (free Gemini via a Vercel function) the page calls;
+│                             wired in via window.AGENT_BACKEND, with client-side fallback if down
 ├── docs/
 │   ├── 2025_Day_*.pdf      ← the 5 source whitepapers
 │   ├── PRINCIPLES.md       ← distilled spine, provenance preserved (fact/decision/assumption)
