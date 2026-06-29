@@ -199,6 +199,11 @@ $ bash scripts/check.sh&nbsp;&nbsp;&nbsp;# the deterministic gate — drive it g
 
 </div>
 
+<!-- Live LLM backend: free Gemini model via a Vercel function (webapp/). Server-to-server, so
+     no CORS issue; free tier, so abuse just hits a rate limit. If it's slow/down/throttled the
+     router silently falls back to the in-browser loop below — the page never breaks. -->
+<script>window.AGENT_BACKEND = "https://webapp-nu-hazel.vercel.app";</script>
+
 <script>
 // ── The hub's landing-page agent: two small loops that run entirely in the browser. ──
 // HYBRID: if a live LLM backend is configured, the router calls it; otherwise it routes locally.
@@ -230,7 +235,7 @@ function renderRoute(box, r){
   const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   box.innerHTML =
     `① GOAL: ${esc(r.goal)}  <span style="color:#8b97a7">(level ${esc(r.level)})</span>\n` +
-    `  🧠 matched <b>${esc(r.hit)}</b> → ${esc(r.module.id)}\n` +
+    `  🧠 ${r.via ? "reasoned" : "matched"} <b>${esc(r.hit)}</b> → ${esc(r.module.id)}\n` +
     `  🔧 route('${esc(r.level)}') -> ${esc(r.moduleHref)}\n\n` +
     `⑤ START HERE → <a href="${r.moduleHref}"><b>${esc(r.module.id)} · ${esc(r.module.name)}</b></a>\n` +
     `   your path → <a href="${r.personaHref}">${esc(r.level)}</a>` +
@@ -252,7 +257,7 @@ async function ask(){
         const d = await res.json();
         const m = MODULES.find(x => x.id === d.module) || MODULES[4];
         renderRoute(box, { goal: goal || "(none given)", level, module:m, hit:d.reason || "LLM",
-          moduleHref:`modules/${m.dir}/${level}.md`, personaHref:`personas/${level}.md`, via:"live Claude backend" });
+          moduleHref:`modules/${m.dir}/${level}.md`, personaHref:`personas/${level}.md`, via:"live LLM backend" });
         return;
       }
     }catch(e){ /* backend down → fall through to local */ }

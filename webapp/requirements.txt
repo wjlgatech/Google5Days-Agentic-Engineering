@@ -1,3 +1,4 @@
-anthropic
+# Local dev only (FastAPI app.py). The Vercel function (api/agent.py) is stdlib-only.
+# The LLM call uses a free OpenAI-compatible endpoint (Gemini) via urllib — no SDK needed.
 fastapi
 uvicorn[standard]
