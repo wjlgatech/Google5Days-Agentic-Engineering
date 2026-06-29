@@ -207,7 +207,7 @@ $ bash scripts/check.sh&nbsp;&nbsp;&nbsp;# the deterministic gate — drive it g
 <script>
 // ── The hub's landing-page agent: two small loops that run entirely in the browser. ──
 // HYBRID: if a live LLM backend is configured, the router calls it; otherwise it routes locally.
-// Set window.AGENT_BACKEND = "https://your-host" (see webapp/) to upgrade to a real Claude model.
+// window.AGENT_BACKEND (set above) points at the live free-Gemini backend in webapp/; unset it to force the offline router.
 
 // ---- PANEL 1: persona router — a rule-based agent loop (read intent → pick route → answer) ----
 const MODULES = [
