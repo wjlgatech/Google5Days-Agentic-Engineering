@@ -49,6 +49,8 @@ Learn → Decide` — is those five days as **one repeatable, compounding loop**
 Google5Days-Agentic-Engineering/
 ├── README.md              ← you are here (the operating system)
 ├── index.html             ← self-contained hub for humans (zero deps, GitHub-Pages ready)
+├── themes.css             ← brand-aesthetic theme seam: design tokens × `data-theme` bodies
+│                             (active: "google" / Material 3 — swap the attribute to restyle)
 │                             — incl. an AGENTIC landing panel: an in-browser persona router
 │                               + a live M1 agent loop (offline; upgrades to a live model via webapp/)
 ├── webapp/                ← live LLM backend (free Gemini via a Vercel function) the page calls;

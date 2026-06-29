@@ -1,58 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="google">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Agentic Engineering Hub</title>
+<link rel="stylesheet" href="themes.css">
 <style>
-  :root{
-    --bg:#0e1116; --panel:#161b22; --panel2:#1c2230; --ink:#e6edf3; --mut:#8b97a7;
-    --line:#262d3a; --accent:#3553ff; --accent2:#23c197; --warn:#f0a93b; --rad:14px;
-  }
+  /* color · type · radius · shadow come from themes.css via [data-theme] */
   *{box-sizing:border-box} html{scroll-behavior:smooth}
-  body{margin:0;background:radial-gradient(1200px 600px at 80% -10%,#1a2440 0,var(--bg) 55%);
-    color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  body{margin:0;min-height:100vh;background:var(--hero-bg);background-attachment:fixed;
+    color:var(--ink);font:16px/1.6 var(--font-sans)}
   a{color:var(--accent2);text-decoration:none} a:hover{text-decoration:underline}
   .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
   header{padding:64px 0 28px}
   .kic{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:5px 13px;margin-bottom:18px}
+    color:var(--muted);border:1px solid var(--edge);border-radius:999px;padding:5px 13px;margin-bottom:18px}
   h1{font-size:clamp(30px,5vw,52px);line-height:1.08;margin:.1em 0 .3em;letter-spacing:-.02em}
-  h1 .g{background:linear-gradient(92deg,#6f8bff,#23c197);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lede{font-size:19px;color:#c9d4e2;max-width:760px}
+  h1 .g{background:linear-gradient(92deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:19px;color:var(--muted);max-width:760px}
   .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
-  .btn{display:inline-block;padding:11px 18px;border-radius:11px;font-weight:600;border:1px solid var(--line)}
-  .btn.p{background:var(--accent);color:#fff;border-color:transparent}
-  .btn.s{background:var(--panel);color:var(--ink)}
-  section{padding:34px 0;border-top:1px solid var(--line);margin-top:14px}
-  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin:0 0 18px;font-weight:700}
+  .btn{display:inline-block;padding:11px 18px;border-radius:11px;font-weight:600;border:1px solid var(--edge)}
+  .btn.p{background:var(--accent);color:var(--onaccent);border-color:transparent}
+  .btn.s{background:var(--surface);color:var(--ink)}
+  section{padding:34px 0;border-top:1px solid var(--edge);margin-top:14px}
+  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;font-weight:700}
   .grid{display:grid;gap:14px}
   .p5{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
   .p3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);
+  .card{background:var(--surface);border:1px solid var(--edge);border-radius:var(--radius);
     padding:18px 18px 16px;transition:.16s;display:block;color:inherit}
-  .card:hover{transform:translateY(-3px);text-decoration:none;border-color:#3b4666;background:var(--panel2)}
+  .card:hover{transform:translateY(-3px);text-decoration:none;border-color:var(--accent);background:var(--surface)}
   .card .ico{font-size:22px} .card h3{margin:.5em 0 .15em;font-size:17px}
-  .card .who{color:var(--mut);font-size:13.5px}
+  .card .who{color:var(--muted);font-size:13.5px}
   .card .tag{display:inline-block;margin-top:10px;font-size:12px;color:var(--accent2);
-    border:1px solid var(--line);border-radius:7px;padding:2px 8px}
-  .loop{background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);
-    padding:18px;overflow-x:auto;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#bcd}
+    border:1px solid var(--edge);border-radius:7px;padding:2px 8px}
+  .loop{background:var(--surface);border:1px solid var(--edge);border-radius:var(--radius);
+    padding:18px;overflow-x:auto;font:13px/1.7 var(--font-mono);color:var(--ink)}
   table{width:100%;border-collapse:collapse;font-size:14.5px}
-  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{color:var(--mut);font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--edge);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
   td code{color:var(--accent2)}
   .two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-  .pill{font-size:12px;color:var(--warn);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
-  code.k{background:#0a0d12;border:1px solid var(--line);border-radius:7px;padding:2px 7px;color:#cdd6e0;font-size:13.5px}
-  footer{color:var(--mut);font-size:13.5px;padding:40px 0 60px;border-top:1px solid var(--line);margin-top:20px}
-  .ask input,.ask select{background:#0a0d12;border:1px solid var(--line);color:var(--ink);
+  .pill{font-size:12px;color:var(--accent2);border:1px solid var(--edge);border-radius:7px;padding:2px 8px}
+  code.k{background:var(--surface);border:1px solid var(--edge);border-radius:7px;padding:2px 7px;color:var(--ink);font:13.5px var(--font-mono)}
+  footer{color:var(--muted);font-size:13.5px;padding:40px 0 60px;border-top:1px solid var(--edge);margin-top:20px}
+  .ask input,.ask select{background:var(--surface);border:1px solid var(--edge);color:var(--ink);
     border-radius:9px;padding:9px 11px;font:14px inherit;margin:5px 6px 5px 0}
-  .ask input{min-width:min(100%,260px)} .ask label{font-size:12.5px;color:var(--mut);display:block;margin-top:6px}
+  .ask input{min-width:min(100%,260px)} .ask label{font-size:12.5px;color:var(--muted);display:block;margin-top:6px}
   .ask button{cursor:pointer;font:inherit} .ask .btn{margin-top:8px}
   .out{display:none;margin-top:12px;white-space:pre-wrap}
   .out a{color:var(--accent2)} .out b{color:var(--ink)}
   .live{cursor:default} .live h3{margin-top:.5em}
+  h1,.card h3{font-family:var(--font-display);letter-spacing:var(--tracking-display)}
 </style>
 </head>
 <body>
@@ -101,7 +100,7 @@
       <div id="trace" class="loop out" aria-live="polite"></div>
     </div>
   </div>
-  <p style="margin-top:14px;color:var(--mut);font-size:13.5px">Both panels run client-side and work
+  <p style="margin-top:14px;color:var(--muted);font-size:13.5px">Both panels run client-side and work
     offline. A live <b>free-model</b> backend is wired in (<code class="k">window.AGENT_BACKEND</code> →
     <a href="webapp/">webapp/</a>, Gemini free tier on Vercel); if it's unreachable the router
     falls back to the in-browser loop automatically.</p>
@@ -235,12 +234,12 @@ function routeLocally(level, goal){
 function renderRoute(box, r){
   const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   box.innerHTML =
-    `① GOAL: ${esc(r.goal)}  <span style="color:#8b97a7">(level ${esc(r.level)})</span>\n` +
+    `① GOAL: ${esc(r.goal)}  <span style="color:var(--muted)">(level ${esc(r.level)})</span>\n` +
     `  🧠 ${r.via ? "reasoned" : "matched"} <b>${esc(r.hit)}</b> → ${esc(r.module.id)}\n` +
     `  🔧 route('${esc(r.level)}') -> ${esc(r.moduleHref)}\n\n` +
     `⑤ START HERE → <a href="${r.moduleHref}"><b>${esc(r.module.id)} · ${esc(r.module.name)}</b></a>\n` +
     `   your path → <a href="${r.personaHref}">${esc(r.level)}</a>` +
-    (r.via ? `\n\n<span style="color:#8b97a7">— routed by ${esc(r.via)}</span>` : "");
+    (r.via ? `\n\n<span style="color:var(--muted)">— routed by ${esc(r.via)}</span>` : "");
   box.style.display = "block";
 }
 async function ask(){
