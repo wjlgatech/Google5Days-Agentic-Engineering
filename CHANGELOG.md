@@ -4,6 +4,18 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 
 ## [Unreleased]
 
+### Changed
+- **Google (Material 3) brand theme via a swappable seam.** Re-themed `index.html` to the
+  `webapp-style` token contract and dropped in `themes.css`: the page now reads only design
+  tokens (`--canvas/--surface/--ink/--accent/--radius/--shadow/--font-*`) instead of hardcoded
+  dark-theme colors, and `<html data-theme="google">` selects the Material 3 body — white canvas
+  with the multi-color radial wash, `#1A73E8`/`#EA4335` accents, 16px rounding, elevation shadow,
+  Google Sans/Roboto type. Swapping `data-theme` now restyles the whole hub (9 bodies ship in
+  `themes.css`); adding a brand is one `[data-theme]` block, zero component edits. Fixed two
+  light-on-light readability bugs surfaced by the swap (the lede + two inline greys → `--muted`).
+  Verified in a headless browser (canvas `#fff`, ink `#202124`, lede readable, both agent panels
+  still work). Gate 102/102.
+
 ### Added
 - **Live LLM backend — deployed to Vercel, free, and wired into the page.** The guide agent's
   backend now runs at `https://webapp-nu-hazel.vercel.app/api/agent` and `index.html` points
