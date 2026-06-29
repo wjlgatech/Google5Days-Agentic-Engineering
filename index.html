@@ -102,8 +102,9 @@
     </div>
   </div>
   <p style="margin-top:14px;color:var(--mut);font-size:13.5px">Both panels run client-side and work
-    offline. If a live LLM backend is configured (<code class="k">window.AGENT_BACKEND</code> →
-    <a href="webapp/">webapp/</a>), the router upgrades to a real Claude model automatically.</p>
+    offline. A live <b>free-model</b> backend is wired in (<code class="k">window.AGENT_BACKEND</code> →
+    <a href="webapp/">webapp/</a>, Gemini free tier on Vercel); if it's unreachable the router
+    falls back to the in-browser loop automatically.</p>
 </section>
 
 <section id="personas">
