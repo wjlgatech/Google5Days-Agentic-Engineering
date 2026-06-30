@@ -29,6 +29,7 @@ bash scripts/check.sh -v       # verbose: print every check
 | **O11** | Modules compose on a live run | `scripts/e2e.py`: a real M1 run → evaluated by M4 → gated by M5, all green |
 | **O12** | No broken promises | every module advertised in `index.html` exists on disk, and every module on disk is advertised (bidirectional) |
 | **O13** | Capstone path is complete | `personas/LEARNING-PATHS.md` exists and references all 5 modules (M1–M5) and all 5 personas |
+| **O14** | Lessons ratchet (the loop compounds) | every `memory/lessons/*.json` with a `system_improvement.guard` has its `cmd` run by the gate (exit 0). Banking a lesson grows the gate by one with **no edit to `check.sh`** — evidence becomes a permanent check; the bar ratchets up. The compounding loop, mechanized. |
 
 ## Human-judgment gates (NOT machine-scored — surfaced, never self-certified)
 

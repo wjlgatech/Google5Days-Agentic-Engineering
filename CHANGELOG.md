@@ -4,6 +4,21 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 
 ## [Unreleased]
 
+### Added
+- **O14 — the compounding loop, mechanized (Deepen 10X).** The hub's root claim ("evidence
+  changes the next decision / a living system that compounds") was prose: `memory/` was hand-seeded
+  and a lesson never became a check. Now a lesson carries an executable `system_improvement.guard
+  {desc, cmd}`, and a new gate objective **O14** runs every guard — so **banking a lesson grows the
+  gate by one with zero edits to `scripts/check.sh`**, and a broken guard turns the gate RED.
+  Wired the two existing lessons (L001 startswith-key, L002 unknown-param path) to real guards;
+  gate 102 → **104/104**. Proven by adding/removing a demo lesson (count moved 104→106; bad guard
+  went RED). Schema (`schemas/lesson.schema.json`) + `docs/OBJECTIVES.md` updated.
+- **`Makefile` — one finish line (`make check`).** Wraps `scripts/check.sh` + `pytest tests/` so CI
+  and `anyagent goal` can discover/route to the check (previously it found none).
+- **`docs/10X-PROPOSAL.md`** — grounded review + one seminal 10X move per axis (Deepen ✅ shipped;
+  Widen = cohort/org mode + MCP `spec-to-green`; Lengthen = CI + free-LLM fallback chain;
+  Heighten = a generator off `schemas/module.schema.json`).
+
 ### Changed
 - **Google (Material 3) brand theme via a swappable seam.** Re-themed `index.html` to the
   `webapp-style` token contract and dropped in `themes.css`: the page now reads only design

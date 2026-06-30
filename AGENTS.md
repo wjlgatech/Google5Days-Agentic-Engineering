@@ -27,8 +27,8 @@ Never fake a green; an honest ❌ beats a bad fix.
 ## How to extend (the compounding motion)
 1. **Add a module:** copy `modules/M1-your-first-agent-loop/`; fill 7 parts × 5 personas; add a runnable artifact + `--selftest`. Use the **exact** part headings the check greps for (Plain / Concrete example / Hands-on / Real-world / Failure mode / Measurable output / Next step).
 2. **Add a tool:** copy `tools/spec-to-green/`; fill `contract.json` (all 8 fields, validates against `schemas/tool.schema.json`); add `SKILL.md` + `prompt.md` for portability.
-3. **Record learning:** add `memory/lessons/L###.json` (its fix ideally a new check line) and `memory/decisions/D###.json`. Convert relative dates to absolute.
-4. **Re-run `bash scripts/check.sh -v`** until green.
+3. **Record learning (and ratchet the gate):** add `memory/lessons/L###.json` + `memory/decisions/D###.json` (absolute dates). Give the lesson a `system_improvement.guard {desc, cmd}` — a shell cmd that exits 0 while the fix holds. **O14 runs it automatically, so the gate grows by one with no edit to `check.sh`**; that is the compounding loop (evidence → a permanent check). A broken guard turns the gate RED.
+4. **Re-run the gate** — `make check` (gate + tests) or `bash scripts/check.sh -v` — until green.
 
 ## House rules
 - Prefer **deterministic enforcement** (schemas, checks, hooks) for anything that must be correct; use prompts/judgment for the rest (Day 2/4/5).
