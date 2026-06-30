@@ -141,6 +141,29 @@ if [[ -f "$LP" ]]; then
   for p in "${PERSONAS[@]}"; do has "$LP" "$p" "capstone references persona $p"; done
 fi
 
+hdr "O14  Lessons ratchet — every banked lesson's guard is enforced (the loop compounds)"
+# Deepen / self-modifying loop: a lesson's fix becomes a LIVE check automatically.
+# Add system_improvement.guard {desc,cmd} to a memory/lessons/*.json and the gate GROWS
+# by one here — with no edit to this file. Evidence -> a permanent check; the bar ratchets up.
+_guards=$(python3 - <<'PYEOF'
+import json, glob
+for f in sorted(glob.glob("memory/lessons/*.json")):
+    try: d = json.load(open(f))
+    except Exception: continue
+    g = (d.get("system_improvement") or {}).get("guard") or {}
+    if g.get("cmd"):
+        print("\t".join([d.get("id","?"), g.get("desc","").replace("\t"," "), g["cmd"]]))
+PYEOF
+)
+if [[ -z "$_guards" ]]; then
+  ok "no lesson guards yet (add system_improvement.guard to ratchet the gate)"
+else
+  while IFS=$'\t' read -r _lid _desc _cmd; do
+    [[ -z "${_cmd:-}" ]] && continue
+    if bash -c "$_cmd" >/dev/null 2>&1; then ok "$_lid guard holds — $_desc"; else bad "$_lid guard BROKEN — $_desc"; fi
+  done <<< "$_guards"
+fi
+
 # ---- summary ----
 printf '\n\033[1m──────────────────────────────\033[0m\n'
 TOTAL=$((PASS+FAIL))

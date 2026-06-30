@@ -3,13 +3,17 @@
   "date": "2026-06-26",
   "what_failed": "The M1 exercise agent_loop.py looped 6x calling calculator('') and the self-test failed: the planner never registered that a tool had already been used.",
   "why_it_failed": "Root cause: a representation mismatch. run() stored each action as a formatted string `calculator('6 * 7')`, but think() checked `action == 'calculator'` (the bare name). The equality never matched, so the 'already done' guard never tripped. A second bug: the arithmetic regex captured a leading space instead of the expression.",
-  "signal_missed": "The printed trajectory showed calculator('') repeating 6 times with an ERROR observation — a loud, visible signal that the guard wasn't working. Reading the trajectory (Day 4: the trajectory is the truth) located it in one pass; guessing would not have.",
+  "signal_missed": "The printed trajectory showed calculator('') repeating 6 times with an ERROR observation \u2014 a loud, visible signal that the guard wasn't working. Reading the trajectory (Day 4: the trajectory is the truth) located it in one pass; guessing would not have.",
   "system_improvement": {
     "rule": "When one function writes a value and another reads it, assert they share the same representation. Compare on a stable key (startswith bare tool name), not a formatted display string.",
-    "test_or_check": "agent_loop.py --selftest now asserts BOTH tools were used AND the answer contains 42 AND sunset — catches the regression. scripts/check.sh O10 runs --selftest, so this can't silently rot.",
+    "test_or_check": "agent_loop.py --selftest now asserts BOTH tools were used AND the answer contains 42 AND sunset \u2014 catches the regression. scripts/check.sh O10 runs --selftest, so this can't silently rot.",
     "prompt": "",
     "workflow": "",
-    "tool": ""
+    "tool": "",
+    "guard": {
+      "desc": "M1 think() still compares on the bare-tool-name key (startswith), not the formatted action string",
+      "cmd": "grep -q startswith modules/M1-your-first-agent-loop/exercise/agent_loop.py"
+    }
   },
   "becomes_eval_case": true
 }
