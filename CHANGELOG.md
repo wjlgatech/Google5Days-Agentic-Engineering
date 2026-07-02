@@ -5,6 +5,22 @@ All notable changes to the Agentic Engineering Hub. Format: [Keep a Changelog](h
 ## [Unreleased]
 
 ### Added
+- **Widen · Lengthen · Heighten — the remaining three 10X axes, shipped (with before→after proof
+  in [`docs/UPGRADE-EVIDENCE.md`](docs/UPGRADE-EVIDENCE.md), written for a 15-year-old).**
+  - **↑ Heighten — module generator (`scripts/new-module.py`):** adding a module drops from
+    **9 hand-authored files → 1 command**; output passes O4 (7 headings ×5 personas) + O10
+    (self-test) by construction. Verified by generating to a temp dir and running both checks.
+  - **→ Lengthen — CI + free-LLM fallback chain:** `.github/workflows/ci.yml` runs `make check`
+    on **every push/PR** (was 0 automated); `webapp/guide.py` now tries an **ordered 4-provider
+    chain** (Gemini → Groq → NVIDIA NIM → OpenRouter, was 1) via `active_providers(env)` +
+    fall-through, so a rate-limit no longer kills the LLM path. Verified: `tests/test_fallback.py`
+    (4 tests, chain order) + live Gemini still routes.
+  - **↔ Widen — MCP + cohort:** `tools/spec-to-green/mcp_server.py` exposes the tool over **MCP**
+    (verified with a real initialize/tools-list/tools-call session) so any agent client can call
+    it; `paths/onboarding.md` + an `author` field on lessons turn single-player learning into a
+    **team's shared, compounding memory**.
+  - Net: `anyagent analyze` 62 → **65/100** (earned by adding tools+tests, not deleting); gate
+    stays **104/104**; nothing broke.
 - **O14 — the compounding loop, mechanized (Deepen 10X).** The hub's root claim ("evidence
   changes the next decision / a living system that compounds") was prose: `memory/` was hand-seeded
   and a lesson never became a check. Now a lesson carries an executable `system_improvement.guard

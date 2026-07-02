@@ -26,20 +26,20 @@ by one with **zero edits to `check.sh`**; a broken guard turns it RED.
 **Why 10X:** every other feature now inherits compounding; the hub stops *teaching* the loop and
 *is* it. Gate: 102 → 104, proven by adding/removing a demo lesson (count moved, guard enforced).
 
-## ↔ Widen — same engine, new market (Ansoff: market development)
+## ↔ Widen — same engine, new market (Ansoff) ✅ SHIPPED
 Single-player today. **Move:** cohort/org mode — `memory/` becomes a *team's shared* store, the gate
 becomes their *CI*, learning-paths become *onboarding tracks*; expose `spec-to-green` as an **MCP
 server** other agents call. **Why 10X:** "a person learns" → "an org compounds"; the memory asset
 gains network effects. **First step:** namespace `memory/` by contributor + a `paths/onboarding.md`.
 
-## → Lengthen — self-enforcing infrastructure (Three Horizons / Wardley)
+## → Lengthen — self-enforcing infrastructure (Three Horizons / Wardley) ✅ SHIPPED
 **Move:** GitHub Actions CI running the full bar (`make check` + O11 e2e + a live-Pages smoke test)
 on **every PR**, plus the free-LLM **fallback chain** (NIM→Groq→Gemini) in `webapp/` so it survives
 throttling. **Why 10X:** "I verified it" → "the system verifies itself, always"; custom → commodity.
 **First step (done here):** a `Makefile check:` target — a single finish line CI and `anyagent goal`
 can both route to.
 
-## ↑ Heighten — extract the grammar (abstraction laddering / MDL)
+## ↑ Heighten — extract the grammar (abstraction laddering / MDL) ✅ SHIPPED
 The repo IS a grammar: **7 parts × 5 personas × {runnable+selftest} × 1 check-line.**
 `schemas/module.schema.json` names it; nothing generates from it. **Move:** a generator that consumes
 the schema, so a new module — or a whole new course on any topic — is **declared, not hand-authored

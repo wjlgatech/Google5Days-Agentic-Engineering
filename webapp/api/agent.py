@@ -11,7 +11,7 @@ from http.server import BaseHTTPRequestHandler
 
 # guide.py sits one directory up (webapp/), outside api/.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from guide import MODEL, NoBackend, route  # noqa: E402
+from guide import NoBackend, active_providers, route  # noqa: E402
 
 
 class handler(BaseHTTPRequestHandler):
@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
         self._send(204, {})
 
     def do_GET(self):  # health
-        self._send(200, {"status": "ok", "model": MODEL, "llm": bool(os.environ.get("GEMINI_API_KEY"))})
+        self._send(200, {"status": "ok", "providers": [p["name"] for p in active_providers(os.environ)], "llm": bool(active_providers(os.environ))})
 
     def do_POST(self):
         n = int(self.headers.get("content-length") or 0)

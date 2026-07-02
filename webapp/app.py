@@ -21,7 +21,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-from guide import MODEL, NoBackend, route
+from guide import NoBackend, active_providers, route
 
 app = FastAPI(title="Agentic Engineering Hub — guide agent")
 # The static page may be served from file:// or GitHub Pages, so allow any origin.
@@ -37,7 +37,7 @@ class Ask(BaseModel):
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "model": MODEL, "llm": bool(os.environ.get("GEMINI_API_KEY"))}
+    return {"status": "ok", "providers": [p["name"] for p in active_providers(os.environ)], "llm": bool(active_providers(os.environ))}
 
 
 @app.post("/api/agent")
