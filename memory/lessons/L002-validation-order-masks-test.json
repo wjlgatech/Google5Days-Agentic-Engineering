@@ -15,5 +15,6 @@
       "cmd": "python3 modules/M2-give-your-agent-hands/exercise/tool_registry.py --selftest | grep -q '\u2713 unknown param teaches'"
     }
   },
-  "becomes_eval_case": true
+  "becomes_eval_case": true,
+  "author": "paul"
 }

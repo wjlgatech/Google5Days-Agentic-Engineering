@@ -67,12 +67,15 @@ Google5Days-Agentic-Engineering/
 │   ├── M4-is-your-agent-any-good/  ← FULLY-built module: agent quality + runnable trajectory evaluator
 │   └── M5-ship-it-without-breaking-it/ ← FULLY-built module: prototype→production + runnable deploy gate
 ├── tools/
-│   └── spec-to-green/      ← PILLAR 2: one reusable agent tool, full 8-field contract, portable
+│   └── spec-to-green/      ← PILLAR 2: reusable tool, 8-field contract; mcp_server.py exposes it over MCP
 ├── loop/                  ← PILLAR 3: the closed-loop engine + per-stage templates
 ├── memory/                ← reusable org memory: decisions/ + lessons/ (the compounding store)
 ├── schemas/               ← structured-output contracts (module / tool / decision / lesson)
-├── tests/                 ← pytest wrappers around each module's --selftest (dev-facing test view)
-└── scripts/check.sh       ← the deterministic verification harness (run it; drive it green)
+├── tests/                 ← pytest wrappers + fallback-chain unit tests
+├── paths/onboarding.md    ← cohort mode: shared team onboarding track
+├── .github/workflows/     ← CI: runs `make check` on every push/PR
+├── Makefile               ← `make check` = the 104-check gate + tests (one finish line)
+└── scripts/               ← check.sh (the gate) · new-module.py (schema-driven module generator)
 ```
 
 **Pillar 1 — Personalized, plug-and-play learning.** Every module has the 7 mission-required

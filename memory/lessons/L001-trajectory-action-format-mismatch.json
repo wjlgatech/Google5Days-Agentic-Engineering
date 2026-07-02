@@ -15,5 +15,6 @@
       "cmd": "grep -q startswith modules/M1-your-first-agent-loop/exercise/agent_loop.py"
     }
   },
-  "becomes_eval_case": true
+  "becomes_eval_case": true,
+  "author": "paul"
 }

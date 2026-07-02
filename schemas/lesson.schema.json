@@ -74,6 +74,10 @@
     "becomes_eval_case": {
       "type": "boolean",
       "description": "Day 4/5: was this added to the golden set / objective registry?"
+    },
+    "author": {
+      "type": "string",
+      "description": "Cohort attribution \u2014 who banked this lesson (org memory)."
     }
   }
 }
